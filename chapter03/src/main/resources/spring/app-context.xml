@@ -10,4 +10,10 @@
 
     <bean id="renderer" class="com.honchar.springDemo.chapter02.decoupled.StandardOutMessageRenderer"
           p:messageProvider-ref="provider"/>
+
+<!--    descriptors: property, constructor-arg                                                                -->
+
+<!--    <bean id="messageProvider" class="com.apress.prospring5.ch3.xml.ConfigurableMessageProvider">         -->
+<!--        <constructor-arg value="I hope that someone gets mу message in а bottle"/>                        -->
+<!--    </bean>                                                                                               -->
 </beans>
