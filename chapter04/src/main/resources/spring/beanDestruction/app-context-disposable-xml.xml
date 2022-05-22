@@ -7,8 +7,7 @@
                 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="destructiveBean"
-          class="com.honchar.springDemo.chapter04.beanDestruction.DestructiveBean"
-          destroy-method="destroy"
+          class="com.honchar.springDemo.chapter04.beanDestruction.DestructiveBeanWithInterface"
           p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
-<!--                            for Win C:\Users\userName\AppData\Local\Temp\test.txt                        -->
+    <!--                            for Win C:\Users\userName\AppData\Local\Temp\test.txt                        -->
 </beans>

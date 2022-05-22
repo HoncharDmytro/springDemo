@@ -1,19 +1,22 @@
 package com.honchar.springDemo.chapter04.beanDestruction;
 
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.io.File;
 
-public class DestructiveBean implements InitializingBean {
+public class DestructiveBeanWithInterface implements InitializingBean, DisposableBean {
     private File file;
     private String filePath;
 
+    @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing Bean");
 
         if (filePath == null) {
-            throw new IllegalArgumentException("You must specify the filePath property of" + DestructiveBean.class);
+            throw new IllegalArgumentException("You must specify the filePath property of "
+                    + DestructiveBeanWithInterface.class);
         }
 
         this.file = new File(filePath);
@@ -21,6 +24,7 @@ public class DestructiveBean implements InitializingBean {
         System.out.println("File exists: " + file.exists());
     }
 
+    @Override
     public void destroy() {
         System.out.println("Destroying Bean");
 
@@ -31,17 +35,19 @@ public class DestructiveBean implements InitializingBean {
         System.out.println("File exists: " + file.exists());
     }
 
-    public void setFilePath (String filePath) { this.filePath = filePath; }
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
 
-    public static void main (String... args) throws Exception {
+    public static void main(String ... args) throws Exception {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring/beanDestruction/app-context-xml.xml");
+        ctx.load("classpath:spring/beanDestruction/app-context-disposable-xml.xml");
         ctx.refresh();
 
-        DestructiveBean bean = (DestructiveBean) ctx.getBean("destructiveBean");
+        DestructiveBeanWithInterface bean = (DestructiveBeanWithInterface) ctx.getBean("destructiveBean");
 
         System.out.println("Calling destroy()");
-        ctx.close();//destroy() deprecated!!!
+        ctx.close();
         System.out.println("Called destroy()");
     }
 }
