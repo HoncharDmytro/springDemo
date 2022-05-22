@@ -14,7 +14,7 @@ public class DestructiveBeanConfigDemo {
         DestructiveBeanWithJSR250_PreDestroy destructiveBean() {
             DestructiveBeanWithJSR250_PreDestroy destructiveBean = new DestructiveBeanWithJSR250_PreDestroy();
             destructiveBean.setFilePath(System.getProperty("java.io.tmpdir") +
-                    System.getProperty("file.separator") + "test.txt");
+                    System.getProperty("file.separator") + "spring/propertyEditor/test.txt");
             return destructiveBean;
         }
 
