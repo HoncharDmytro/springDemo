@@ -48,7 +48,7 @@ public class SingerWithJSR250_PostConstruct {
 
     public static void main(String... args){
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring/app-context-annotation.xml");
+        ctx.load("classpath:spring/beanInitialization/app-context-annotation.xml");
         ctx.refresh();
         getBean("singerOne", ctx);
         getBean("singerTwo", ctx);

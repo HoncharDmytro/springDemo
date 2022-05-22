@@ -45,7 +45,7 @@ public class Singer {
 
     public static void main (String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring/app-context.xml");
+        ctx.load("classpath:spring/beanInitialization/app-context.xml");
         ctx.refresh();
 
         getBean("singerOne", ctx);

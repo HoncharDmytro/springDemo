@@ -48,7 +48,7 @@ public class SingerWithInterface implements InitializingBean {
 
     public static void main (String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring/app-context-xml.xml");
+        ctx.load("classpath:spring/beanInitialization/app-context-xml.xml");
         ctx.refresh();
         getBean("singerOne", ctx);
         getBean("singerTwo", ctx);
