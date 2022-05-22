@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.honchar'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'org.springframework:spring-context:5.3.10'
+//    implementation project(':chapter02')
+//    implementation project(':chapter03')
+}
+
+test {
+    useJUnitPlatform()
+}
