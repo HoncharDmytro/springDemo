@@ -1,4 +1,6 @@
-package com.honchar.springDemo.chapter03;
+package com.honchar.springDemo.chapter03.setter_injection;
+
+import com.honchar.springDemo.chapter03.setter_injection.Dependency;
 
 public class SetterInjection {
     private Dependency dependency;

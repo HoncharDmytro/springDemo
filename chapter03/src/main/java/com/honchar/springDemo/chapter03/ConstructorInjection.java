@@ -1,5 +1,7 @@
 package com.honchar.springDemo.chapter03;
 
+import com.honchar.springDemo.chapter03.setter_injection.Dependency;
+
 public class ConstructorInjection {
     private Dependency dependency;
 

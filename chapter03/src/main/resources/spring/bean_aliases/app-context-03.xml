@@ -5,5 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="oracle" name="wiseworm" class="com.honchar.springDemo.chapter03.setter_injection.BookwormOracle"/>
+    <bean name="jon johnny,jonathan;jim" class="java.lang.String"/>
+
+    <bean id="jon johnny,jonathan;jim" class="java.lang.String"/>
 </beans>

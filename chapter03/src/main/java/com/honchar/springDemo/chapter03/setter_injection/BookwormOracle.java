@@ -1,6 +1,6 @@
-package com.honchar.springDemo.chapter03;
+package com.honchar.springDemo.chapter03.setter_injection;
 
-public class BookwormOracle implements Oracle{
+public class BookwormOracle implements Oracle {
     private Encyclopedia encyclopedia;
 
     public void setEncyclopedia(Encyclopedia encyclopedia) {

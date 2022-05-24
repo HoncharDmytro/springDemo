@@ -1,4 +1,4 @@
-package com.honchar.springDemo.chapter03;
+package com.honchar.springDemo.chapter03.setter_injection;
 
 public interface NewsletterSender {
     void setSmtpServer(String smtpServer);

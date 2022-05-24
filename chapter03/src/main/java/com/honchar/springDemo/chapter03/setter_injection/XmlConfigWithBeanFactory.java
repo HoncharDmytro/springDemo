@@ -1,5 +1,6 @@
-package com.honchar.springDemo.chapter03;
+package com.honchar.springDemo.chapter03.setter_injection;
 
+import com.honchar.springDemo.chapter03.setter_injection.Oracle;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
