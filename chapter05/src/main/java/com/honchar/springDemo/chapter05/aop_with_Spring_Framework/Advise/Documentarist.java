@@ -1,4 +1,4 @@
-package com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.Advise;
+package com.honchar.springDemo.chapter05.aop_with_Spring_Framework.Advise;
 
 import com.honchar.springDemo.chapter05.aop_with_Proxy_Factory_from_JDK.springCuts.nameMatcingCuts.GrammyGuitarist;
 

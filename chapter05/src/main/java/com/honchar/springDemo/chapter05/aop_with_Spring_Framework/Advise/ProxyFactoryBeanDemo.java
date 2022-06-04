@@ -1,6 +1,5 @@
-package com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.Advise;
+package com.honchar.springDemo.chapter05.aop_with_Spring_Framework.Advise;
 
-import com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.Advise.Documentarist;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class ProxyFactoryBeanDemo {

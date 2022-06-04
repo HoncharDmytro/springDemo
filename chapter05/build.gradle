@@ -15,9 +15,9 @@ dependencies {
     implementation 'org.springframework:spring-aop:5.3.10'
     implementation 'org.aspectj:aspectjtools:1.9.9.1'
     implementation 'org.springframework:spring-context:5.3.10'
-//    implementation 'org.slf4j:jcl-over-slf4j:1.7.30'
-//    implementation 'org.springframework.boot:spring-boot:2.7.0'
-//    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.0'
+    implementation 'org.slf4j:jcl-over-slf4j:1.7.30'
+    implementation 'org.springframework.boot:spring-boot:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.0'
 }
 
 test {

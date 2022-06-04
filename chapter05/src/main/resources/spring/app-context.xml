@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="guitarist" class="com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.Introduction.Contact"
+    <bean id="guitarist" class="com.honchar.springDemo.chapter05.aop_with_Spring_Framework.Introduction.Contact"
           p:name="John Mayer"/>
 
     <bean id="advisor" class="com.honchar.springDemo.chapter05.aop_with_Mixin.IsModifiedAdvisor"/>

@@ -1,4 +1,4 @@
-package com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.AOP_Namespace;
+package com.honchar.springDemo.chapter05.aop_with_Spring_Framework.AOP_Namespace;
 
 import org.aspectj.lang.JoinPoint;
 

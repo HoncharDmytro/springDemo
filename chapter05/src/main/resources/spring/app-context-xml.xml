@@ -10,9 +10,9 @@
         http://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="johnMayer" class="com.honchar.springDemo.chapter05.aop_with_Proxy_Factory_from_JDK.springCuts.nameMatcingCuts.GrammyGuitarist"/>
-    <bean id="advice" class="com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.Advise.AuditAdvice"/>
+    <bean id="advice" class="com.honchar.springDemo.chapter05.aop_with_Spring_Framework.Advise.AuditAdvice"/>
 
-    <bean id="documentaristOne" class="com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.Advise.Documentarist"
+    <bean id="documentaristOne" class="com.honchar.springDemo.chapter05.aop_with_Spring_Framework.Advise.Documentarist"
           p:guitarist-ref="proxyOne"/>
 
     <bean id="proxyOne" class="org.springframework.aop.framework.ProxyFactoryBean"
@@ -23,7 +23,7 @@
     </util:list>
 
 
-    <bean id="documentaristTwo" class="com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.Advise.Documentarist"
+    <bean id="documentaristTwo" class="com.honchar.springDemo.chapter05.aop_with_Spring_Framework.Advise.Documentarist"
           p:guitarist-ref="proxyTwo"/>
 
     <bean id="proxyTwo" class="org.springframework.aop.framework.ProxyFactoryBean"

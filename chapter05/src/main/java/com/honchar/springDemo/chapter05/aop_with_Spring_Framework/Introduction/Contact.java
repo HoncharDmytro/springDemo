@@ -1,4 +1,4 @@
-package com.honchar.springDemo.chapter05.aop_with_Spring_Framework.ProxyFactoryBean.Introduction;
+package com.honchar.springDemo.chapter05.aop_with_Spring_Framework.Introduction;
 
 public class Contact {
 
