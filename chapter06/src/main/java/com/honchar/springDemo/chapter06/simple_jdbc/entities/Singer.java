@@ -1,4 +1,4 @@
-package com.honchar.springDemo.chapter06.entities;
+package com.honchar.springDemo.chapter06.simple_jdbc.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
