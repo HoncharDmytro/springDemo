@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-
 import com.honchar.springDemo.chapter06.simple_jdbc.entities.Singer;
 import org.springframework.jdbc.object.MappingSqlQuery;
 

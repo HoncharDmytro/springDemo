@@ -1,5 +1,9 @@
 package com.honchar.springDemo.chapter06.spring_jdbc_annotations.dao;
 
+import com.honchar.springDemo.chapter06.simple_jdbc.dao.SingerDao;
+import com.honchar.springDemo.chapter06.simple_jdbc.entities.Album;
+import com.honchar.springDemo.chapter06.simple_jdbc.entities.Singer;
+import com.honchar.springDemo.chapter06.spring_jdbc_annotations.*;
 import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

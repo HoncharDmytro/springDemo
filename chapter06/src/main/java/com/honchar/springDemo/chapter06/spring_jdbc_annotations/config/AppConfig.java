@@ -22,8 +22,8 @@ public class AppConfig {
     private String driverClassName;
     @Value("${url}")
     private String url;
-    @Value("${username}")
-    private String username;
+    @Value("${user}")
+    private String user;
     @Value("${password}")
     private String password;
 
@@ -38,7 +38,7 @@ public class AppConfig {
             BasicDataSource dataSource = new BasicDataSource();
             dataSource.setDriverClassName(driverClassName);
             dataSource.setUrl(url);
-            dataSource.setUsername(username);
+            dataSource.setUsername(user);
             dataSource.setPassword(password);
             return dataSource;
         } catch (Exception e) {
