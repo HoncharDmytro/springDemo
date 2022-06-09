@@ -4,10 +4,10 @@ import com.honchar.springDemo.chapter06.simple_jdbc.dao.SingerDao;
 import com.honchar.springDemo.chapter06.simple_jdbc.entities.Album;
 import com.honchar.springDemo.chapter06.simple_jdbc.entities.Singer;
 import com.honchar.springDemo.chapter06.spring_jdbc_annotations.config.AppConfig;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
@@ -15,17 +15,17 @@ import java.sql.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@Ignore
+@Disabled
 public class AnnotationJdbcTest {
 
     private GenericApplicationContext ctx;
     private SingerDao singerDao;
 
-    @Before
+    @BeforeAll
     public void setUp() {
         ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         singerDao = ctx.getBean(SingerDao.class);
@@ -119,7 +119,7 @@ public class AnnotationJdbcTest {
         });
     }
 
-    @After
+    @AfterAll
     public void tearDown() {
         ctx.close();
     }
