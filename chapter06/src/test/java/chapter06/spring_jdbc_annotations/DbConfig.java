@@ -1,4 +1,4 @@
-package com.honchar.springDemo.chapter06.spring_jdbc_annotations;
+package chapter06.spring_jdbc_annotations;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

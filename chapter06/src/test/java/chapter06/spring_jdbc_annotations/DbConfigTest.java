@@ -1,7 +1,7 @@
-package com.honchar.springDemo.chapter06.spring_jdbc_annotations;
+package chapter06.spring_jdbc_annotations;
 
-import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -25,8 +25,8 @@ public class DbConfigTest {
     @Test
     public void testOne() throws SQLException {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        //ctx.load("classpath:spring/drivermanager-cfg-01.xml");
-        //ctx.load("classpath:spring/drivermanager-cfg-02.xml");
+        ctx.load("classpath:spring/drivermanager-cfg-01.xml");
+        ctx.load("classpath:spring/drivermanager-cfg-02.xml");
         ctx.load("classpath:spring/datasource-dbcp.xml");
         ctx.refresh();
 
