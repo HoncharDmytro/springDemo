@@ -3,6 +3,7 @@ package com.honchar.springDemo.chapter07.hibernate_base;
 import com.honchar.springDemo.chapter07.hibernate_base.config.AppConfig;
 import com.honchar.springDemo.chapter07.hibernate_base.dao.SingerDao;
 import com.honchar.springDemo.chapter07.hibernate_base.entities.Album;
+import com.honchar.springDemo.chapter07.hibernate_base.entities.Instrument;
 import com.honchar.springDemo.chapter07.hibernate_base.entities.Singer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterAll;
@@ -22,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestBase {
-    private static Logger logger = LoggerFactory.getLogger(TestBase.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
 
     private GenericApplicationContext ctx;
     private SingerDao singerDao;
@@ -102,7 +103,7 @@ public class TestBase {
 
     @Test
     public void testDelete(){
-        Singer singer = singerDao.findById(2l);
+        Singer singer = singerDao.findById(2L);
         //making sure such singer exists
         assertNotNull(singer);
         singerDao.delete(singer);
@@ -124,7 +125,8 @@ public class TestBase {
                 singer.getAlbums().forEach(album -> logger.info("\t" + album.toString()));
             }
             if (singer.getInstruments() != null) {
-                singer.getInstruments().forEach(instrument -> instrument.getInstrumentId());
+                singer.getInstruments().forEach(Instrument::getInstrumentId);
+                //singer.getInstruments().forEach(instrument -> instrument.getInstrumentId());
             }
         });
     }
