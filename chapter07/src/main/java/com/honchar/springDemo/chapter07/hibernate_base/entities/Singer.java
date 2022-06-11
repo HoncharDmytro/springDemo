@@ -1,12 +1,12 @@
 package com.honchar.springDemo.chapter07.hibernate_base.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "singer")
@@ -71,7 +71,7 @@ public class Singer implements Serializable {
     }
 
 
-    @ManyToMany
+    @ManyToMany //MANY-TO-MANY ASSOCIATION
     @JoinTable(name = "singer_instrument",
             joinColumns = @JoinColumn(name = "singer_id"),
             inverseJoinColumns = @JoinColumn(name = "instrument_id"))

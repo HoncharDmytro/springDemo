@@ -1,11 +1,11 @@
 package com.honchar.springDemo.chapter07.hibernate_base.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-import static jakarta.persistence.GenerationType.AUTO;
-import static jakarta.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "album")
