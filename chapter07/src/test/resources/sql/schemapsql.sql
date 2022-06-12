@@ -1,7 +1,5 @@
 CREATE DATABASE music2db;
 
-CREATE SEQUENCE hibernate_sequence START 1;
-
 CREATE TABLE public.singer (
     id SERIAL NOT NULL PRIMARY KEY,
     first_name VARCHAR(60) NOT NULL,

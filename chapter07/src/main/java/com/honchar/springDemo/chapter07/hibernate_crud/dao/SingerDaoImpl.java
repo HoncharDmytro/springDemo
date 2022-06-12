@@ -1,6 +1,6 @@
-package com.honchar.springDemo.chapter07.hibernate_base.dao;
+package com.honchar.springDemo.chapter07.hibernate_crud.dao;
 
-import com.honchar.springDemo.chapter07.hibernate_base.entities.Singer;
+import com.honchar.springDemo.chapter07.hibernate_crud.entities.Singer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;

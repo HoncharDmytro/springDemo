@@ -27,12 +27,13 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "com.honchar.springDemo.chapter07")
+@ComponentScan(basePackages = "com.honchar.springDemo.chapter07.hibernate_base")
 @EnableTransactionManagement
 @PropertySource("classpath:db/jdbc2.properties")
 public class AppConfig {
 
     private static Logger logger = LoggerFactory.getLogger(AppConfig.class);
+
     @Autowired
     Environment env;
 
@@ -64,13 +65,15 @@ public class AppConfig {
         hibernateProp.put("hibernate.format_sql", true);
         hibernateProp.put("hibernate.use_sql_comments", true);
         hibernateProp.put("hibernate.show_sql", true);
+        //hibernateProp.put("hibernate.hbm2ddl.auto", "create-drop");
         hibernateProp.put("hibernate.max_fetch_depth", 3);
         hibernateProp.put("hibernate.jdbc.batch_size", 10);
         hibernateProp.put("hibernate.jdbc.fetch_size", 50);
         return hibernateProp;
     }
 
-    @Bean public SessionFactory sessionFactory() throws IOException {
+    @Bean
+    public SessionFactory sessionFactory() throws IOException {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setPackagesToScan("com.honchar.springDemo.chapter07.hibernate_base.entities");
@@ -79,7 +82,8 @@ public class AppConfig {
         return sessionFactoryBean.getObject();
     }
 
-    @Bean public PlatformTransactionManager transactionManager() throws IOException {
+    @Bean
+    public PlatformTransactionManager transactionManager() throws IOException {
         return new HibernateTransactionManager(sessionFactory());
     }
 }

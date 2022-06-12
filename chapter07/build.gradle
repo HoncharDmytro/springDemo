@@ -26,6 +26,10 @@ dependencies {
     implementation 'org.springframework:spring-context:5.3.20'
     implementation 'org.springframework.boot:spring-boot:2.7.0'
     implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.0'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
+    implementation 'org.apache.commons:commons-dbcp2:2.9.0'
+
 }
 
 test {

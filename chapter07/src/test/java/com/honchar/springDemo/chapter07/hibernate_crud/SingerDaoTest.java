@@ -1,12 +1,9 @@
-package com.honchar.springDemo.chapter07.hibernate_base;
+package com.honchar.springDemo.chapter07.hibernate_crud;
 
-import com.honchar.springDemo.chapter07.hibernate_base.config.AppConfig;
-import com.honchar.springDemo.chapter07.hibernate_base.dao.SingerDao;
-import com.honchar.springDemo.chapter07.hibernate_base.entities.Album;
-import com.honchar.springDemo.chapter07.hibernate_base.entities.Singer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import com.honchar.springDemo.chapter07.hibernate_crud.config.AdvancedConfig;
+import com.honchar.springDemo.chapter07.hibernate_crud.dao.SingerDao;
+import com.honchar.springDemo.chapter07.hibernate_crud.entities.Album;
+import com.honchar.springDemo.chapter07.hibernate_crud.entities.Singer;
 import org.junit.jupiter.api.TestInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,23 +13,23 @@ import org.springframework.context.support.GenericApplicationContext;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class TestBase {
-    private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
+public class SingerDaoTest {
+    private static Logger logger = LoggerFactory.getLogger(SingerDaoTest.class);
 
     private GenericApplicationContext ctx;
-    //private ApplicationContext ctx;
     private SingerDao singerDao;
 
     @BeforeAll
     public void setUp(){
-        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        //ctx = new ClassPathXmlApplicationContext("app-context.xml");//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //singerDao = ctx.getBean(SingerDao.class); //!!!!!!!!!!!!!!!!!!!!!!!!!
+        ctx = new AnnotationConfigApplicationContext(AdvancedConfig.class);
         singerDao = ctx.getBean(SingerDao.class);
         assertNotNull(singerDao);
     }
@@ -89,10 +86,12 @@ public class TestBase {
     @Test
     public void testUpdate(){
         Singer singer = singerDao.findById(1L);
+        //making sure such singer exists
         assertNotNull(singer);
+        //making sure we got expected record
         assertEquals("Mayer", singer.getLastName());
-        Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies")).findFirst()
-                .get();
+        //retrieve the album
+        Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies")).findFirst().get();
 
         singer.setFirstName("John Clayton");
         singer.removeAlbum(album);
@@ -103,7 +102,8 @@ public class TestBase {
 
     @Test
     public void testDelete(){
-        Singer singer = singerDao.findById(2L);
+        Singer singer = singerDao.findById(4l);
+        //making sure such singer exists
         assertNotNull(singer);
         singerDao.delete(singer);
 
@@ -113,26 +113,27 @@ public class TestBase {
 
     private static void listSingers(List<Singer> singers) {
         logger.info(" ---- Listing singers:");
-        singers.forEach(singer -> logger.info(singer.toString()));
+        for (Singer singer : singers) {
+            logger.info(singer.toString());
+        }
     }
 
     private static void listSingersWithAlbum(List<Singer> singers) {
         logger.info(" ---- Listing singers with instruments:");
-        singers.forEach(singer -> {
-            logger.info(singer.toString());
-            if (singer.getAlbums() != null) {
-                singer.getAlbums().forEach(album -> logger.info("\t" + album.toString()));
+        singers.forEach(s -> {
+            logger.info(s.toString());
+            if (s.getAlbums() != null) {
+                s.getAlbums().forEach(a -> logger.info("\t" + a.toString()));
             }
-            if (singer.getInstruments() != null) {
-                //singer.getInstruments().forEach(Instrument::getInstrumentId);
-                singer.getInstruments().forEach(instrument -> instrument.getInstrumentId());
+            if (s.getInstruments() != null) {
+                s.getInstruments().forEach(i -> logger.info("\tInstrument: " + i.getInstrumentId()));
             }
         });
     }
 
     @AfterAll
     public void tearDown(){
-        ctx.destroy();
+        ctx.close();
     }
 
 }
