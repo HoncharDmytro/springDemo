@@ -26,11 +26,6 @@ public class Singer extends AbstractEntity {
     public static final String FIND_SINGER_BY_ID = "Singer.findById";
     public static final String FIND_ALL_WITH_ALBUM = "Singer.findAllWithAlbum";
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
     @Column(name = "first_name")
     private String firstName;
 
@@ -40,11 +35,6 @@ public class Singer extends AbstractEntity {
     @Temporal(TemporalType.DATE)
     @Column(name = "birth_date")
     private Date birthDate;
-
-
-    public Long getId() { return id; }
-
-    public void setId(Long id) { this.id = id; }
 
     @OneToMany(mappedBy = "singer", cascade=CascadeType.ALL,
             orphanRemoval=true)

@@ -6,7 +6,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)//GenerationType.IDENTITY
     @Column(updatable = false)
     protected Long id;
     @Version

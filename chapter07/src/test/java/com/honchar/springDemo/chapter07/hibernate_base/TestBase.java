@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -24,16 +25,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class TestBase {
     private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
 
-    private GenericApplicationContext ctx;
-    //private ApplicationContext ctx;
+    //private GenericApplicationContext ctx;
+    private GenericXmlApplicationContext ctx;
     private SingerDao singerDao;
 
     @BeforeAll
     public void setUp(){
-        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        //ctx = new ClassPathXmlApplicationContext("app-context.xml");//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //singerDao = ctx.getBean(SingerDao.class); //!!!!!!!!!!!!!!!!!!!!!!!!!
-        singerDao = ctx.getBean(SingerDao.class);
+        //ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ctx = new GenericXmlApplicationContext();
+        ctx.load("classpath:app-context.xml");
+        ctx.refresh();
+        singerDao = ctx.getBean("singerDao", SingerDao.class); //!!!!!!!!!!!!!!!!!!!!!!!!!
+        //singerDao = ctx.getBean(SingerDao.class);
         assertNotNull(singerDao);
     }
 
@@ -132,7 +135,7 @@ public class TestBase {
 
     @AfterAll
     public void tearDown(){
-        ctx.destroy();
+        ctx.close();
     }
 
 }
