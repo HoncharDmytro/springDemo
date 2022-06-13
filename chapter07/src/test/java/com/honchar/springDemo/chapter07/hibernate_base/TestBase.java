@@ -1,6 +1,6 @@
 package com.honchar.springDemo.chapter07.hibernate_base;
 
-import com.honchar.springDemo.chapter07.hibernate_base.config.AppConfig;
+//import com.honchar.springDemo.chapter07.hibernate_base.config.AppConfig;
 import com.honchar.springDemo.chapter07.hibernate_base.dao.SingerDao;
 import com.honchar.springDemo.chapter07.hibernate_base.entities.Album;
 import com.honchar.springDemo.chapter07.hibernate_base.entities.Singer;
@@ -33,9 +33,9 @@ public class TestBase {
     public void setUp(){
         //ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:app-context.xml");
+        ctx.load("classpath:app-context2.xml");
         ctx.refresh();
-        singerDao = ctx.getBean("singerDao", SingerDao.class); //!!!!!!!!!!!!!!!!!!!!!!!!!
+        singerDao = ctx.getBean("singerDao", SingerDao.class); //or ("singerDao", SingerDao.class) its same!
         //singerDao = ctx.getBean(SingerDao.class);
         assertNotNull(singerDao);
     }

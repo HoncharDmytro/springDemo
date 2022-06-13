@@ -20,34 +20,35 @@
     <context:property-placeholder location="classpath:db/jdbc2.properties"/>
 
     <tx:annotation-driven/>
-    <context:component-scan base-package="com.honchar.springDemo.chapter07.hibernate_base"/>
-
-    <bean id="dataSource"
-          class="org.apache.commons.dbcp2.BasicDataSource"
-          destroy-method="close"
-          p:driverClassName="${driverClassName}"
-          p:url="${url}"
-          p:username="${user}"
-          p:password="${password}"/>
-
-    <util:properties id="hibernateProperties">
-        <prop key="hibernate.dialect">${dialect}</prop>
-        <prop key="hibernate.format_sql">true</prop>
-        <prop key="hibernate.use_sql_comments">true</prop>
-        <prop key="hibernate.show_sql">true</prop>
-        <prop key="hibernate.max_fetch_depth">З</prop>
-        <prop key="hibernate.jdbc.batch_size">10</prop>
-        <prop key="hibernate.jdbc.fetch_size">5O</prop>
-        <!--        <prop key="hibernate.hbm2ddl.auto">create-drop</prop>-->
-    </util:properties>
+    <context:component-scan base-package="com.honchar.springDemo.chapter07.hibernate_base.dao"/>
 
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
-          p:dataSource-ref="dataSource"
-          p:packagesToScan="com.honchar.springDemo.chapter07.entities"
-          p:hibernateProperties-ref="hibernateProperties"/>
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.honchar.springDemo.chapter07.hibernate_base.entities"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${dialect}</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.use_sql_comments">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.max_fetch_depth">3</prop>
+                <prop key="hibernate.jdbc.batch_size">10</prop>
+                <prop key="hibernate.jdbc.fetch_size">50</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+            <property name="driverClassName" value="${driverClassName}"/>
+            <property name="url" value="${url}"/>
+            <property name="username" value="${user}"/>
+            <property name="password" value="${password}"/>
+    </bean>
 
     <bean id="transactionManager"
-          class="org.springframework.orm.hibernate5.HibernateTransactionManager"
-          p:sessionFactory-ref="sessionFactory"/>
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 </beans>
