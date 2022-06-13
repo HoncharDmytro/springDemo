@@ -32,11 +32,14 @@ public class TestBase {
     @BeforeAll
     public void setUp(){
         //ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        //singerDao = ctx.getBean(SingerDao.class);
+        // OR //
         ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:app-context2.xml");
         ctx.refresh();
-        singerDao = ctx.getBean("singerDao", SingerDao.class); //or ("singerDao", SingerDao.class) its same!
-        //singerDao = ctx.getBean(SingerDao.class);
+        //1111111111111111111111111111111111111
+
+        singerDao = ctx.getBean(SingerDao.class); //or ("singerDao", SingerDao.class) its same!
         assertNotNull(singerDao);
     }
 

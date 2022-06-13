@@ -15,6 +15,6 @@ public class CleanUp {
 
     private void destroy() {
         logger.info(" ... Deleting database files.");
-        jdbcTemplate.execute("TRUNCATE album, instrument, singer, singer_instrument;");
+        jdbcTemplate.execute("TRUNCATE album, instrument, singer, singer_instrument;");//"DROP ALL OBJECTS DELETE FILES;"
     }
 }

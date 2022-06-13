@@ -124,7 +124,7 @@ Chapter 06 JDBC, Spring Data:
 	
 Chapter 07 Hibernate:
 
-	pass
+	All in module 7.
 
 
 Chapter 08 JPA:

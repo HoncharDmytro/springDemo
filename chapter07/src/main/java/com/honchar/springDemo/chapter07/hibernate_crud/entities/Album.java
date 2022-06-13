@@ -1,76 +1,73 @@
 package com.honchar.springDemo.chapter07.hibernate_crud.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "album")
 public class Album extends AbstractEntity {
 
-    @Column
-    private String title;
+	@Column
+	private String title;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "release_date")
+	@Temporal(TemporalType.DATE)
+	@Column(name = "release_date")
 
-    private Date releaseDate;
+	private Date releaseDate;
 
-    @ManyToOne
-    @JoinColumn(name = "singer_id")
-    private Singer singer;
+	@ManyToOne
+	@JoinColumn(name = "singer_id")
+	private Singer singer;
 
-    public Singer getSinger() {
-        return this.singer;
-    }
+	public Singer getSinger() {
+		return this.singer;
+	}
 
-    public String getTitle() {
-        return this.title;
-    }
+	public String getTitle() {
+		return this.title;
+	}
 
-    public Date getReleaseDate() {
-        return this.releaseDate;
-    }
+	public Date getReleaseDate() {
+		return this.releaseDate;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setSinger(Singer singer) {
-        this.singer = singer;
-    }
+	public void setSinger(Singer singer) {
+		this.singer = singer;
+	}
 
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
-    }
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
 
-    @Override
-    public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return String.format("Album - id: %d, Singer id: %d, Title: %s, Release Date: %s",
-                id, singer.getId(), title, sdf.format(releaseDate));
-    }
+	@Override
+	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return String.format("Album - id: %d, Singer id: %d, Title: %s, Release Date: %s",
+				id, singer.getId(), title, sdf.format(releaseDate));
+	}
 
-    @Override public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        if (!super.equals(o))
-            return false;
-        Album album = (Album) o;
-        if (title != null ? !title.equals(album.title) : album.title != null)
-            return false;
-        return releaseDate != null ? releaseDate.equals(album.releaseDate) : album.releaseDate == null;
-    }
+	@Override public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		if (!super.equals(o))
+			return false;
+		Album album = (Album) o;
+		if (title != null ? !title.equals(album.title) : album.title != null)
+			return false;
+		return releaseDate != null ? releaseDate.equals(album.releaseDate) : album.releaseDate == null;
+	}
 
-    @Override public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
-        return result;
-    }
+	@Override public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + (title != null ? title.hashCode() : 0);
+		result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
+		return result;
+	}
 }
