@@ -23,7 +23,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan(basePackages = "com.honchar.springDemo.chapter07.hibernate_crud")
 @EnableTransactionManagement
-@PropertySource("classpath:db/jdbc.properties")
+@PropertySource("classpath:db/jdbc2.properties")
 public class AdvancedConfig {
 
 	private static Logger logger = LoggerFactory.getLogger(AdvancedConfig.class);
