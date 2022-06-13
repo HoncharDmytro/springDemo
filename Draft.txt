@@ -1,0 +1,136 @@
+Chapter 03 Inversion of Control(IoC):
+
+	GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
+	ctx.load("classpath:spring/app-context-annotation.xml");
+	ctx.refresh();
+	MessageProvider messageProvider = ctx.getBean("provider", MessageProvider.class);
+	
+	GenericXmlApplicationContext
+	GenericApplicationContext
+	AnnotationConfigApplicationContext
+	AnnotationConfigWebApplicationContext
+ 	ConfigurationClassPostProcessor
+	ClassPathXmlApplicationContext
+	ApplicationContext
+
+	PropertySourcesPlaceholderConfigurer
+
+	@Configuration
+ 	@ImportResource("classpath:/com/acme/database-config.xml")
+ 	public class AppConfig {
+     		@Inject DataSource dataSource; // from XML // or  @Autowired DataSource dataSource;
+    		@Bean
+     		public MyBean myBean() {
+         		// inject the XML-defined dataSource bean
+         		return new MyBean(this.dataSource);
+     		}
+ 	}
+
+	<bean id="targetByName" autowire="byName"// autowire="byType" // autowire="constructor"
+	class="com.apress.prospring5.ch3.xml.Target"
+	lazy-init="true"/>
+
+
+Chapter 04 Configuration, context and Bean life cycle:
+
+	<bean id="singerOne"
+	class="com.apress.prospring5.ch4.Singer"
+	init-method="init" p:name="John Mayer" p:age="39"/>
+
+	interfaces InitializingBean, DisposableBean; afterPropertiesSet(){}, destroy(){} 
+
+	@PostConstruct
+	public void init() {
+		//initialisation that performed after constructor is called
+	}
+
+	@PreDestroy
+	public void destroy() {
+		//some action doing with bean destruction
+	}
+
+	@Lazy
+	@Bean(initMethod = "init")
+	Singer singerOne() {
+		Singer singerOne = new Singer();
+		singerOne.setName("John Mayer");
+		singerOne.setAge(39);
+		return singerOne;
+	}
+
+	<context:annotation-config/>
+	<bеаn id="destructiveBean"
+		class="com.apress.prospring5.ch4.DestructiveBeanWithJSR250"
+		p:filePath="#(systemProperties'java.io.tmpdir')
+		#(systemProperties'file.separator')test.txt"/>
+
+	org.springframework.core.io.Resource : contentLength (), exists (), getDescription (),
+	getFile (), getFileName (), getURI (), getURL (), isOpen (), isReadable (), lastModified() 
+	and createRelative()
+
+	File file = File.createTempFile("test", "txt");
+	file.deleteOnExit();
+	Resource resl = ctx.getResource("file://" + file.getPath());
+	Resource res2 = ctx.getResource("classpath:test.txt");
+	Resource resЗ = ctx.getResource("http://www.google.com");
+
+@Bean, @Configuration, @Component, @ComponentScan, @Service, @Resource, @Repository, @EnableTransactionManagement, @Transactional, @PropertySource, 	@Value, @Lazy, @Scope, 	@DependsOn, @Autowired, @PostConstruct, @PreDestroy, @SuppressWarnings, @MappedSuperclass, @Id, @EmbeddedId, @GeneratedValue, @Column, @Transient, @Version, @Entity, @Table, @Temporal, @OneToMany, @ManyToOne, @ManyToMany,  @JoinColumn, @NamedQueries, @NamedQuery, @TestInstance, @BeforeAll, @AfterAll, @Test, @Import, @ImportResource, @Inject, @Named, @RunWith, @ContextConfiguration, @AliasFor, @PropertySource, @Qualifier, @SpringBootApplication, @EnableAutoConfiguration, @EnableWebSecurity, @EnableGlobalMethodSecurity, @Controller, @RestController, @RequestMapping, @PathVariable, @RequestParam, @ModelAttribute, @SessionAttributes, @SessionAttribute, @RequestBody, @ResponseBody, @RequestHeader, @ResponseHeader, @Required, @CookieValue, @PathVariable, @RequestParam, @ModelAttribute, @SessionAttributes, @PreAuthorize, @GetMapping, @SpringBootTest, @MockBean, @Validated, @ConditionalOnJava, @ConditionalOnProperty, @ConditionalOnWebApplication, @ConditionalOnClass, @Override, @SuppressWarnings, @Deprecated, @SafeVarargs, @FunctionalInterface, @Native, @FunctionalInterface, @Target, @Retention, @Inherited, @Documented, @Repeatable, @GuardedBy, @Immutable, @NotThreadSafe, @ThreadSafe, @NotNull, @NotNullOrEmpty, @ValueObject, @Rollback, @Slf4j, @Profile, @ActiveProfiles, @Aspect, @Pointcut, @Before, @After, @Around, @AspectJ, @EnableAspectJAutoProxy, @AdviceRequired, 
+
+	@Autowired
+	Environment env;
+	ConfigurableEnvironment env;
+
+Chater 05 Aspect-oriented programming(AOP):
+
+	pass
+
+
+Chapter 06 JDBC, Spring Data:
+
+	DriverManagerDataSource не поддерживается пул соединений с базой данных, только для тестирования, конфигурация:
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="${jdbc.driverClassName}"
+		p:url="$(jdbc.url)"
+		p:username="${jdbc.username}" //jdbc.user in pg
+		p:password="${jdbc.password}"/>
+	<context:property-placeholder location="classpath:db/jdbc.properties"/> //OR// <util:properties id="jdbc" location="classpath:db/jdbc2.properties"/>
+	//jdbc.driverClassName=com.mysql.cj.jdbc.Driver
+	//jdbc.url= jdbc:mysql://localhost:3306/musicdb?useSSL=true
+	//jdbc.username=name
+	//jdbc.password=pass
+	
+	В реальных приложениях используй нормальный источник данных, например BasicDataSource(Project Apache Commons):
+		<bean id="dataSource"
+			class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"
+			---
+
+	Можно воспользоватся пулом соединений контейнера через интерфейс JNDI:
+		<bean id="dataSource"
+			class="org.springframework.jndi.JndiObjectFactoryBean" //OR// <jee:jndi-lookup jndi-name="java:comp/env/jdbc/musicdb" />
+			p:jndiName="java:comp/env/jdbc/musicdb"/>
+			<root-node>
+				<resource-ref>
+					<res-ref-name>jdbc/musicdb</res-ref-name>
+					<res-type>javax.sql.DataSource</res-type>
+					<res-auth>Container</res-auth>
+				</resource-ref>
+			</root-node>
+		
+	
+
+Chapter 07 Hibernate:
+
+	
+
+
+Chapter 08 JPA:
+
+	
+
+
+
+
+
+
+
