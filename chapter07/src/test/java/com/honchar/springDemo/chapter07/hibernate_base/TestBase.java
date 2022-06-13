@@ -32,7 +32,6 @@ public class TestBase {
     @BeforeAll
     public void setUp(){
         //ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        //singerDao = ctx.getBean(SingerDao.class);
         // OR //
         ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:app-context2.xml");

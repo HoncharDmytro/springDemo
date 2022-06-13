@@ -1,6 +1,6 @@
 package com.honchar.springDemo.chapter07.hibernate_crud;
 
-import com.honchar.springDemo.chapter07.hibernate_crud.config.AdvancedConfig;
+//import com.honchar.springDemo.chapter07.hibernate_crud.config.AdvancedConfig;
 import com.honchar.springDemo.chapter07.hibernate_crud.dao.SingerDao;
 import com.honchar.springDemo.chapter07.hibernate_crud.entities.Album;
 import com.honchar.springDemo.chapter07.hibernate_crud.entities.Singer;
@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -24,14 +25,21 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class SingerDaoTest {
 	private static Logger logger = LoggerFactory.getLogger(SingerDaoTest.class);
 
-	private GenericApplicationContext ctx;
+	private GenericXmlApplicationContext ctx;
+	//private GenericApplicationContext ctx;
 	private SingerDao singerDao;
 
 	@BeforeAll
 	public void setUp(){
-		 ctx = new AnnotationConfigApplicationContext(AdvancedConfig.class);
-		 singerDao = ctx.getBean(SingerDao.class);
-		 assertNotNull(singerDao);
+		//ctx = new AnnotationConfigApplicationContext(AdvancedConfig.class);
+		// OR //
+		ctx = new GenericXmlApplicationContext();
+		ctx.load("classpath:app-context-init.xml");
+		ctx.refresh();
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+		singerDao = ctx.getBean(SingerDao.class);
+		assertNotNull(singerDao);
 	}
 
 	@Test
@@ -86,11 +94,8 @@ public class SingerDaoTest {
 	@Test
 	public void testUpdate(){
 		Singer singer = singerDao.findById(1L);
-		//making sure such singer exists
 		assertNotNull(singer);
-		//making sure we got expected record
 		assertEquals("Mayer", singer.getLastName());
-		//retrieve the album
 		Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies")).findFirst().get();
 
 		singer.setFirstName("John Clayton");
@@ -109,7 +114,6 @@ public class SingerDaoTest {
 
 		listSingersWithAlbum(singerDao.findAllWithAlbum());
 	}
-
 
 	private static void listSingers(List<Singer> singers) {
 		logger.info(" ---- Listing singers:");
