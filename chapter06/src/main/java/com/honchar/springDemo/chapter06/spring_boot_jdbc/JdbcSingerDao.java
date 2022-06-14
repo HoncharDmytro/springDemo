@@ -6,11 +6,14 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+//@Repository
 @Component
 public class JdbcSingerDao implements SingerDao, InitializingBean {
 
@@ -22,16 +25,14 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
     }
 
     @Override public String findNameById(Long id) {
-        return jdbcTemplate.queryForObject(
-                "SELECT first_name || ' ' || last_name FROM singer WHERE id = ?",
-                new Object[]{id}, String.class);
+        return jdbcTemplate.queryForObject("SELECT CONCAT_WS(' ', first_name, last_name) " +
+                "FROM singer WHERE id = ?", new Object[]{id}, String.class);
     }
 
     @Override
     public String findFirstNameById(Long id) {
         return jdbcTemplate.queryForObject(
-                "SELECT first_name FROM singer WHERE id = ?",
-                new Object[]{id}, String.class);
+                "SELECT first_name FROM singer WHERE id = ?", new Object[]{id}, String.class);
     }
 
     @Override public List<Singer> findAll() {
