@@ -1,39 +1,39 @@
 CREATE DATABASE IF NOT EXISTS misic1db;
 
-CREATE TABLE music1db.SINGER (
-    ID INT  NOT NULL AUTO_INCREMENT
-    , FIRST_NAME VARCHAR(60) NOT NULL
-    , LAST_NAME VARCHAR(40) NOT NULL
-    , BIRTH_DATE DATE
-    , VERSION INT NOT NULL DEFAULT 0
-    , UNIQUE (FIRST_NAME, LAST_NAME)
-    , PRIMARY KEY (ID)
+CREATE TABLE music1db.singer (
+    id INT  NOT NULL AUTO_INCREMENT
+    , first_name VARCHAR(60) NOT NULL
+    , last_name VARCHAR(40) NOT NULL
+    , birth_date DATE
+    , version INT NOT NULL DEFAULT 0
+    , UNIQUE (first_name, last_name)
+    , PRIMARY KEY (id)
 );
 
-CREATE TABLE music1db.ALBUM (
-    ID INT NOT NULL AUTO_INCREMENT
-    , SINGER_ID INT NOT NULL
-    , TITLE VARCHAR(100) NOT NULL
-    , RELEASE_DATE DATE
-    , VERSION INT NOT NULL DEFAULT 0
-    , UNIQUE (SINGER_ID, TITLE)
-    , PRIMARY KEY (ID)
-    , CONSTRAINT FK_ALBUM_SINGER FOREIGN KEY (SINGER_ID)
-        REFERENCES SINGER (ID)
+CREATE TABLE music1db.album (
+    id INT NOT NULL AUTO_INCREMENT
+    , singer_id INT NOT NULL
+    , title VARCHAR(100) NOT NULL
+    , release_date DATE
+    , version INT NOT NULL DEFAULT 0
+    , UNIQUE (singer_id, title)
+    , PRIMARY KEY (id)
+    , CONSTRAINT fk_album_singer FOREIGN KEY (singer_id)
+        REFERENCES singer (id)
 );
 
 
-CREATE TABLE music1db.INSTRUMENT (
-    INSTRUMENT_ID VARCHAR(20) NOT NULL
-    , PRIMARY KEY (INSTRUMENT_ID)
+CREATE TABLE music1db.instrument (
+    instrument_id VARCHAR(20) NOT NULL
+    , PRIMARY KEY (instrument_id)
 );
 
-CREATE TABLE music1db.SINGER_INSTRUMENT (
-    SINGER_ID INT NOT NULL
-    , INSTRUMENT_ID VARCHAR(20) NOT NULL
-    , PRIMARY KEY (SINGER_ID, INSTRUMENT_ID)
-    , CONSTRAINT FK_SINGER_INSTRUMENT_1 FOREIGN KEY (SINGER_ID)
-        REFERENCES SINGER (ID) ON DELETE CASCADE
-    , CONSTRAINT FK_SINGER_INSTRUMENT_2 FOREIGN KEY (INSTRUMENT_ID)
-        REFERENCES INSTRUMENT (INSTRUMENT_ID)
+CREATE TABLE music1db.singer_instrument (
+    singer_id INT NOT NULL
+    , instrument_id VARCHAR(20) NOT NULL
+    , PRIMARY KEY (singer_id, instrument_id)
+    , CONSTRAINT fk_singer_instrument_1 FOREIGN KEY (singer_id)
+        REFERENCES singer (id) ON DELETE CASCADE
+    , CONSTRAINT fk_singer_instrument_2 FOREIGN KEY (instrument_id)
+        REFERENCES instrument (instrument_id)
 );

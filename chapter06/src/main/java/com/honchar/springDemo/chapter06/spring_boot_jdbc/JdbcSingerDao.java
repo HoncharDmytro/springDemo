@@ -34,7 +34,6 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
                 new Object[]{id}, String.class);
     }
 
-    // Unimplemented methods, add implementations and tests as practice
     @Override public List<Singer> findAll() {
         throw new NotImplementedException("findAll");
     }
@@ -53,10 +52,14 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     @Override public void update(Singer singer) {
         throw new NotImplementedException("update");
+//        String query="update singer where name = '"+ singer.getName() +"' ";
+//        jdbcTemplate.update(query);
     }
 
     @Override public void delete(Long singerId) {
         throw new NotImplementedException("delete");
+//        String query="DELETE FROM singer where id = '" + singerId + "' ";
+//        jdbcTemplate.update(query);
     }
 
     @Override public List<Singer> findAllWithAlbums() {

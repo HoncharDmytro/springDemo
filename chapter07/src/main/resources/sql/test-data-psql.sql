@@ -7,12 +7,12 @@ insert into music2db.public.album (singer_id, title, release_date) values (1, 'B
 insert into music2db.public.album (singer_id, title, release_date) values (2, 'From The Cradle ', '1994-09-13');
 
 
-insert into instrument (instrument_id) values ('Guitar');
-insert into instrument (instrument_id) values ('Piano');
-insert into instrument (instrument_id) values ('Voice');
-insert into instrument (instrument_id) values ('Drums');
-insert into instrument (instrument_id) values ('Synthesizer');
+insert into music2db.public.instrument (instrument_id) values ('Guitar');
+insert into music2db.public.instrument (instrument_id) values ('Piano');
+insert into music2db.public.instrument (instrument_id) values ('Voice');
+insert into music2db.public.instrument (instrument_id) values ('Drums');
+insert into music2db.public.instrument (instrument_id) values ('Synthesizer');
 
-insert into singer_instrument(singer_id, instrument_id) values (1, 'Guitar');
-insert into singer_instrument(singer_id, instrument_id) values (1, 'Piano');
-insert into singer_instrument(singer_id, instrument_id) values (2, 'Guitar');
+insert into music2db.public.singer_instrument(singer_id, instrument_id) values (1, 'Guitar');
+insert into music2db.public.singer_instrument(singer_id, instrument_id) values (1, 'Piano');
+insert into music2db.public.singer_instrument(singer_id, instrument_id) values (2, 'Guitar');

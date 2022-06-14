@@ -1,19 +1,20 @@
-CREATE TABLE SINGER (
-                        ID INT NOT NULL AUTO_INCREMENT
-    , FIRST_NAME VARCHAR(60) NOT NULL
-    , LAST_NAME VARCHAR(40) NOT NULL
-    , BIRTH_DATE DATE
-    , UNIQUE (FIRST_NAME, LAST_NAME)
-    , PRIMARY KEY (ID)
+CREATE DATABASE IF NOT EXISTS musicdb;
+
+CREATE TABLE musicdb.singer (
+    id INT NOT NULL AUTO_INCREMENT
+    , first_name VARCHAR(60) NOT NULL
+    , last_name VARCHAR(40) NOT NULL
+    , birth_date DATE
+    , UNIQUE (first_name, last_name)
+    , PRIMARY KEY (id)
 );
 
-CREATE TABLE ALBUM (
-                       ID INT NOT NULL AUTO_INCREMENT
-    , SINGER_ID INT NOT NULL
-    , TITLE VARCHAR(100) NOT NULL
-    , RELEASE_DATE DATE
-    , UNIQUE (SINGER_ID, TITLE)
-    , PRIMARY KEY (ID)
-    , CONSTRAINT FK_ALBUM FOREIGN KEY (SINGER_ID)
-        REFERENCES SINGER (ID)
+CREATE TABLE musicdb.album (
+    id INT NOT NULL AUTO_INCREMENT
+    , singer_id INT NOT NULL
+    , title VARCHAR(100) NOT NULL
+    , release_date DATE
+    , UNIQUE (singer_id, title)
+    , PRIMARY KEY (id)
+    , CONSTRAINT fk_album FOREIGN KEY (singer_id) REFERENCES singer (id)
 );

@@ -2,7 +2,7 @@ CREATE DATABASE music2db;
 
 CREATE SEQUENCE hibernate_sequence START 1;
 
-CREATE TABLE public.singer (
+CREATE TABLE music2db.public.singer (
     id SERIAL NOT NULL PRIMARY KEY,
     first_name VARCHAR(60) NOT NULL,
     last_name VARCHAR(40) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE public.singer (
     version INT NOT NULL DEFAULT 0,
     UNIQUE(first_name, last_name));
 
-CREATE TABLE public.album (
+CREATE TABLE music2db.public.album (
     id SERIAL NOT NULL PRIMARY KEY,
     singer_id INT NOT NULL,
     title VARCHAR(100) NOT NULL,
@@ -20,11 +20,11 @@ CREATE TABLE public.album (
     UNIQUE (singer_id, title)
 );
 
-CREATE TABLE public.instrument (
+CREATE TABLE music2db.public.instrument (
     instrument_id VARCHAR(20) NOT NULL PRIMARY KEY
 );
 
-CREATE TABLE public.singer_instrument (
+CREATE TABLE music2db.public.singer_instrument (
     singer_id INT NOT NULL,
     instrument_id VARCHAR(20) NOT NULL,
     PRIMARY KEY (singer_id, instrument_id),
