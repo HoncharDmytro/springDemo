@@ -3,12 +3,9 @@ package com.honchar.springDemo.chapter06.spring_boot_jdbc;
 import com.honchar.springDemo.chapter06.simple_jdbc.dao.SingerDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
 public class Application {
@@ -23,6 +20,14 @@ public class Application {
         //String singerName = singerDao.findFirstNameById(1L);
         String singerName = singerDao.findNameById(1L);
         logger.info("Retrieved singer: " + singerName);
+
+
+//      List<Singer> allSingers = singerDao.findAll();
+
+//        for (Singer name : allSingers) {
+//            logger.info(name.getFirstName() + " " + name.getLastName());
+//        }
+
 
         //System.in.read();
         ctx.close();

@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //@Repository
@@ -36,7 +37,13 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
     }
 
     @Override public List<Singer> findAll() {
-        throw new NotImplementedException("findAll");
+        List<Singer> data =jdbcTemplate.queryForList("SELECT * FROM singer",Singer.class);
+        return data;
+        //return jdbcTemplate.queryForList("SELECT * FROM singer", Singer.class);
+
+        //List<Singer> data =jdbcTemplate.queryForList("SELECT CONCAT_WS(' ', first_name, last_name) FROM singer",
+        // Singer.class);
+
     }
 
     @Override public List<Singer> findByFirstName(String firstName) {
@@ -52,15 +59,14 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
     }
 
     @Override public void update(Singer singer) {
-        throw new NotImplementedException("update");
-//        String query="update singer where name = '"+ singer.getName() +"' ";
-//        jdbcTemplate.update(query);
+        String updateQuery = "UPDATE singer t SET t.first_name = ?, t.last_name  = ? WHERE t.id = ?";
+        jdbcTemplate.update(updateQuery, new Object[]{singer.getLastName()},
+                new Object[]{singer.getLastName()}, new Object[]{singer.getId()});
     }
 
     @Override public void delete(Long singerId) {
-        throw new NotImplementedException("delete");
-//        String query="DELETE FROM singer where id = '" + singerId + "' ";
-//        jdbcTemplate.update(query);
+        jdbcTemplate.queryForObject(
+                "DELETE FROM singer WHERE id = ?", new Object[]{singerId}, String.class);
     }
 
     @Override public List<Singer> findAllWithAlbums() {
