@@ -11,41 +11,41 @@ import java.util.List;
 
 public class PlainSingerDao implements SingerDao {
 
-    private static Logger logger = LoggerFactory.getLogger(PlainSingerDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(PlainSingerDao.class);
 
     static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         } catch (ClassNotFoundException ex) {
-            logger.error("Prblem loadng DB dDiver!", ex);
+            logger.error("Problem loading DB Driver!", ex);
         }
     }
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/musicdb?useSSL=false",
-                "root", "1111");
+                "root",
+                "1111");
     }
 
-    private void closeConnection(Connection connection) {
-        if (connection == null) {
-            return;
-        }
-        try {
-            connection.close();
-        } catch (SQLException ex) {
-            logger.error("Problem closing connection to the database!",ex);
-        }
-    }
+//    private void closeConnection(Connection connection) {
+//        if (connection == null) {
+//            return;
+//        }
+//        try {
+//            connection.close();
+//        } catch (SQLException ex) {
+//            logger.error("Problem closing connection to the database!",ex);
+//        }
+//    }
 
     @Override
     public List<Singer> findAll() {
         List<Singer> result = new ArrayList<>();
-        Connection connection = null;
-        try {
-            connection = getConnection();
-            PreparedStatement statement =
-                    connection.prepareStatement("select * from SINGER");
+        //Connection connection = null;
+        try (Connection connection = getConnection()){
+            //connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement("select * from SINGER");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Singer singer = new Singer();
@@ -58,17 +58,18 @@ public class PlainSingerDao implements SingerDao {
             statement.close();
         } catch (SQLException ex) {
             logger.error("Problem when executing SELECT!",ex);
-        } finally {
-            closeConnection(connection);
         }
+//        finally {
+//            closeConnection(connection);
+//        }
         return result;
     }
 
     @Override
     public void insert(Singer singer) {
-        Connection connection = null;
-        try {
-            connection = getConnection();
+        //Connection connection = null;
+        try (Connection connection = getConnection()){
+            //connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(
                     "insert into SINGER (first_name, last_name, birth_date) values (?, ?, ?)"
                     , Statement.RETURN_GENERATED_KEYS);
@@ -82,24 +83,26 @@ public class PlainSingerDao implements SingerDao {
             }
         } catch (SQLException ex) {
             logger.error("Prblem executing INSERT", ex);
-        } finally {
-            closeConnection(connection);
         }
+//        finally {
+//            closeConnection(connection);
+//        }
     }
 
     @Override
     public void delete(Long singerId) {
-        Connection connection = null;
-        try {
-            connection = getConnection();
+        //Connection connection = null;
+        try (Connection connection = getConnection()){
+            //connection = getConnection();
             PreparedStatement statement = connection.prepareStatement("delete from SINGER where id=?");
             statement.setLong(1, singerId);
             statement.execute();
         } catch (SQLException ex) {
             logger.error("Prblem executing DELETE", ex);
-        } finally {
-            closeConnection(connection);
         }
+//        finally {
+//            closeConnection(connection);
+//        }
     }
 
     @Override

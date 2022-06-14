@@ -38,7 +38,7 @@ public class AppConfig {
     Environment env;
 
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource() { //better use BasicDataSource for normal programs with pull of connections
         try {
             DriverManagerDataSource dataSource = new DriverManagerDataSource();
             dataSource.setDriverClassName(env.getProperty("driverClassName"));
