@@ -30,6 +30,8 @@ dependencies {
 //    implementation 'org.springframework.boot:spring-boot:2.7.0'
 //
 //    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.0'
+//
+//	  implementation 'com.google.guava:guava:23.0'
 }
 
 tasks.named('test') {

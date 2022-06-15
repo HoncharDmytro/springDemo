@@ -132,10 +132,42 @@ Chapter 08 JPA:
 	EntityManagerFactory -> EntityManager интерфейс, занимается поддержкой контекста сохраняемости, в котором будут храниться все экземпляры сущностей, управляемые этим контекстом. Аналог SessionFactory -> Session из Hibernate.
 	HQL -> JPQL языки запросов.
 	Есть три типа конфигурации: 
-		1. LocalEntityManagerFactoryBean - не поддерживается внедрение источника данных, а следовательно, нельзя принимать участие в 				глобальных транзакциях.
+		1. LocalEntityManagerFactoryBean - не поддерживается внедрение источника данных, а следовательно, нельзя принимать участие в 					глобальных транзакциях.
 		2. JNDI - применяется для совместимого с платформой JEE 6 контейнера, в который сервер приложений производит начальную загрузку 				единицы сохраняемости JPA на основе информации в дескрипторах развертывания. Конфигурация віполняется в META-INF/persistence.xml
-		3. LocalContainerEntityManagerFactoryBean - поддерживается внедрение источника данных и допускается участие как в локальных, так и 		в глобальных транзакциях.
+		3. LocalContainerEntityManagerFactoryBean - поддерживается внедрение источника данных и допускается участие как в локальных, так и 				в глобальных транзакциях.
+	
+	Запрашивание результатов специального типа с помощью выражения конструктора с помощью JPQL: em(EntityManager)
+		public List<SingerSummary> findAll () {
+			List<SingerSummary> result = em.createQuery("select new com.apress.prospring5.ch8.view.SingerSumrnary("s.firstName,"
+				+ " s.lastName, a.title) from Singer s "
+				+ "left join s.albums а where a.releaseDate="
+				+ "(select max(a2.releaseDate) :"
+				+ "from Album а2 where a2.singer.id = s.id)", SingerSummary.class).getResultList();
+			return result;
+		}
+	
+	Выборка: Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies")).findFirst().get();
+	
+	Выборка с помощью собственных запросов(native query):
+		final static String ALL_SINGER_NATIVE_QUERY = "select id, first name, last_name, Ьirth_date, version from singer";
+		public List<Singer> findAllByNativeQuery() {
+			return em.createNativeQuery(ALL_SINGER_NATIVE_QUERY,Singer.class).getResultList();
+		}
+	
+	Собственный запрос с преобразованием результирующего набора SQL:
+		@Entity
+		@TaЬle(name = "singer")
+		@SqlResultSetMapping { (name="singerResult", entities=@EntityResult(entityClass=Singer.class) }
+		public class Singer implements Serializable { ... }
 
+	Criteria API:
+		?
+		?
+		?
+		?
+		?
+		org.hibernate.jpamodelgen.JPAМetaModelEntityProcessor
+	
 Chapter 09 Transactions:
 
 	
