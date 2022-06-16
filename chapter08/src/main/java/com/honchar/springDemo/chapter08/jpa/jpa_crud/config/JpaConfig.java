@@ -24,7 +24,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"com.honchar.springDemo.chapter08.jpa.jpa_crud.dao"})
 @PropertySource("classpath:jpa_crud/properties/jpa.properties")
 public class JpaConfig {
-    private static Logger logger = LoggerFactory.getLogger(JpaConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(JpaConfig.class);
 
 //    @Value("${driverClassName}")
 //    private String driverClassName;

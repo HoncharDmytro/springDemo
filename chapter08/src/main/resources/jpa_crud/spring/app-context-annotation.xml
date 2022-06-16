@@ -15,7 +15,7 @@
 
     <context:property-placeholder location="classpath:jpa_crud/properties/jpa.properties"/>
 
-    <context:component-scan base-package="com.honchar.springDemo.chapter08.jpa.jpa_crud" />
+<!--    <context:component-scan base-package="com.honchar.springDemo.chapter08.jpa.jpa_crud" />-->
 
     <bean id="dataSource"
           class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">

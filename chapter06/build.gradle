@@ -12,13 +12,13 @@ repositories {
 dependencies {
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-//    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 //    testImplementation 'junit:junit:4.13.2'
 
     implementation 'org.slf4j:slf4j-simple:1.7.36'
     implementation 'org.slf4j:slf4j-api:1.7.36'
 
-    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'mysql:mysql-connector-java:8.0.29'
 
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     implementation 'org.apache.commons:commons-dbcp2:2.9.0'
@@ -30,6 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot:2.7.0'
     implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.0'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-gradle-plugin:2.7.0'
 
 
 }
