@@ -1,4 +1,4 @@
-package com.honchar.springDemo.chapter08.jpa.spring_data_jpa;
+package com.honchar.springDemo.chapter08.jpa.spring_data_jpa.services;
 
 import com.honchar.springDemo.chapter08.jpa.spring_data_jpa.entities.Singer;
 

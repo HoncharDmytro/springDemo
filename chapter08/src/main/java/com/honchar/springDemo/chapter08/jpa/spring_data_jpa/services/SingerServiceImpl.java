@@ -1,6 +1,8 @@
-package com.honchar.springDemo.chapter08.jpa.spring_data_jpa;
+package com.honchar.springDemo.chapter08.jpa.spring_data_jpa.services;
 
 import com.honchar.springDemo.chapter08.jpa.spring_data_jpa.entities.Singer;
+import com.honchar.springDemo.chapter08.jpa.spring_data_jpa.repository.SingerRepository;
+import com.honchar.springDemo.chapter08.jpa.spring_data_jpa.services.SingerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

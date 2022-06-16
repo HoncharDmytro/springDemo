@@ -3,6 +3,7 @@ package com.honchar.springDemo.chapter08.jpa.spring_data_jpa;
 import java.util.List;
 
 import com.honchar.springDemo.chapter08.jpa.spring_data_jpa.entities.Singer;
+import com.honchar.springDemo.chapter08.jpa.spring_data_jpa.services.SingerService;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class SpringJPADemo {

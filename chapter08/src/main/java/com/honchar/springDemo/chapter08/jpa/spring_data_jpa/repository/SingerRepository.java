@@ -1,4 +1,4 @@
-package com.honchar.springDemo.chapter08.jpa.spring_data_jpa;
+package com.honchar.springDemo.chapter08.jpa.spring_data_jpa.repository;
 
 import java.util.List;
 
