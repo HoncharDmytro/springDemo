@@ -12,6 +12,13 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+
+	ver = [springVersion: "5.3.20"]
+	aboba = [springContextSuport: "org.springframework:spring-context-support:${ver.springVersion}"]
+
+}
+
 dependencies {
 //	  implementation 'org.springframework.boot:spring-boot-starter'
 //
