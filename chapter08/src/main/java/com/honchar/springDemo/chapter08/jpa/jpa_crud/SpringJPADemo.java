@@ -9,7 +9,7 @@ import java.util.List;
 public class SpringJPADemo {
     public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring/app-context-annotation.xml");
+        ctx.load("classpath:jpa_crud/spring/app-context-annotation.xml");
         ctx.refresh();
 
         SingerService singerService = ctx.getBean(SingerService.class);

@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class Application implements CommandLineRunner {
 
 	@Autowired
 	SingerRepository singerRepository;
+
 
 	public static void main(String... args) throws Exception {
 		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);

@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS misic1db;
+CREATE DATABASE IF NOT EXISTS musicdb7;
 
-CREATE TABLE music1db.singer (
+CREATE TABLE musicdb7.singer (
     id INT  NOT NULL AUTO_INCREMENT
     , first_name VARCHAR(60) NOT NULL
     , last_name VARCHAR(40) NOT NULL
@@ -10,7 +10,7 @@ CREATE TABLE music1db.singer (
     , PRIMARY KEY (id)
 );
 
-CREATE TABLE music1db.album (
+CREATE TABLE musicdb7.album (
     id INT NOT NULL AUTO_INCREMENT
     , singer_id INT NOT NULL
     , title VARCHAR(100) NOT NULL
@@ -23,12 +23,12 @@ CREATE TABLE music1db.album (
 );
 
 
-CREATE TABLE music1db.instrument (
+CREATE TABLE musicdb7.instrument (
     instrument_id VARCHAR(20) NOT NULL
     , PRIMARY KEY (instrument_id)
 );
 
-CREATE TABLE music1db.singer_instrument (
+CREATE TABLE musicdb7.singer_instrument (
     singer_id INT NOT NULL
     , instrument_id VARCHAR(20) NOT NULL
     , PRIMARY KEY (singer_id, instrument_id)

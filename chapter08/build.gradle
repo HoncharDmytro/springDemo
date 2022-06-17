@@ -37,7 +37,7 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.google.guava/guava
     implementation 'com.google.guava:guava:23.0'
-
+//    exclude 'ch.qos.logback:logback-classic:1.2.11'
 }
 
 test {

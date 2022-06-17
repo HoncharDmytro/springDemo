@@ -30,7 +30,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource("classpath:jpa_crud/properties/jpa.properties")
+@PropertySource("classpath:hibernate_envers/prop/jpa.properties")
 @ComponentScan(basePackages = {"com.honchar.springDemo.chapter08.jpa.hibernate_envers"})
 @EnableJpaRepositories(basePackages = {"com.honchar.springDemo.chapter08.jpa.hibernate_envers.repos"})
 @EnableJpaAuditing(auditorAwareRef = "auditorAwareBean")

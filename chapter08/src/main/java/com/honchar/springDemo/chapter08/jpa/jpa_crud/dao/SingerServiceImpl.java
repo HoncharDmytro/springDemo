@@ -19,9 +19,9 @@ import javax.persistence.TypedQuery;
 @SuppressWarnings("unchecked")
 public class SingerServiceImpl implements SingerService {
     final static String ALL_SINGER_NATIVE_QUERY =
-            "select id, first_name, last_name, birth_date, version from singer";
+            "select id, first_name, last_name, birth_date, version from musicdb8.singer";
 
-    private static Logger logger = LoggerFactory.getLogger(SingerServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(SingerServiceImpl.class);
 
 
     @PersistenceContext
@@ -36,8 +36,9 @@ public class SingerServiceImpl implements SingerService {
     @Transactional(readOnly=true)
     @Override
     public List<Singer> findAllWithAlbum() {
-        List<Singer> singers = em.createNamedQuery(Singer.FIND_ALL_WITH_ALBUM, Singer.class).getResultList();
-        return singers;
+//        List<Singer> singers = em.createNamedQuery(Singer.FIND_ALL_WITH_ALBUM, Singer.class).getResultList();
+//        return singers;
+        return em.createNamedQuery(Singer.FIND_ALL_WITH_ALBUM, Singer.class).getResultList();
     }
 
     @Transactional(readOnly=true)

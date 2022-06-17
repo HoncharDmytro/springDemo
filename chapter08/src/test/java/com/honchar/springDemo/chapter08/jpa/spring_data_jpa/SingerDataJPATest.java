@@ -8,8 +8,10 @@ import com.honchar.springDemo.chapter08.jpa.spring_data_jpa.services.SingerServi
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
@@ -19,12 +21,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SingerDataJPATest {
 
 	private static final Logger logger = LoggerFactory.getLogger(SingerDataJPATest.class);
 
+	@Autowired
 	private GenericApplicationContext ctx;
+	@Autowired
 	private SingerService singerService;
+	@Autowired
 	private AlbumService albumService;
 
 	@Test

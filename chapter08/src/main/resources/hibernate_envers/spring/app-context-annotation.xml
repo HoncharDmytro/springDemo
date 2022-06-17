@@ -17,7 +17,7 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder location="classpath:jpa_crud/properties/jpa.properties"/>
+    <context:property-placeholder location="classpath:hibernate_envers/prop/jpa.properties"/>
 
     <bean id="dataSource"
           class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
@@ -53,7 +53,7 @@
                 <prop key="org.hibernate.envers.revision_field_name">AUDIT_REVISION</prop>
                 <prop key="org.hibernate.envers.revision_type_field_name">ACTION_TYPE</prop>
                 <prop key="org.hibernate.envers.audit_strategy">
-                    org.hibernate.envers.strategy.ValidityAuditStrategy
+                    org.hibernate.envers.strategy.internal.ValidityAuditStrategy
                 </prop>
                 <prop key="org.hibernate.envers.audit_strategy_validity_end_rev_field_name">
                     AUDIT_REVISION_END

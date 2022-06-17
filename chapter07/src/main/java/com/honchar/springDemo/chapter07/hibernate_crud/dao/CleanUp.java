@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class CleanUp {
-    private static Logger logger = LoggerFactory.getLogger(CleanUp.class);
+    private static final Logger logger = LoggerFactory.getLogger(CleanUp.class);
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public CleanUp(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -15,6 +15,7 @@ public class CleanUp {
 
     private void destroy() {
         logger.info(" ... Deleting database files.");
-        jdbcTemplate.execute("TRUNCATE album, instrument, singer, singer_instrument;");//"DROP ALL OBJECTS DELETE FILES;"
+        jdbcTemplate.execute("TRUNCATE musicdb7.album, musicdb7.instrument, musicdb7.singer," +
+                " musicdb7.singer_instrument;");//"DROP ALL OBJECTS DELETE FILES;"
     }
 }

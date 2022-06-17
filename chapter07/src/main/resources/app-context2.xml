@@ -20,7 +20,8 @@
     <context:property-placeholder location="classpath:db/jdbc2.properties"/>
 
     <tx:annotation-driven/>
-    <context:component-scan base-package="com.honchar.springDemo.chapter07.hibernate_base"/>
+
+    <context:component-scan base-package="com.honchar.springDemo.chapter07.hibernate_base.dao"/>
 
     <bean id="dataSource"
           class="org.apache.commons.dbcp2.BasicDataSource"

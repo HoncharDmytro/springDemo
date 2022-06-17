@@ -7,12 +7,14 @@ import com.honchar.springDemo.chapter08.jpa.jpa_crud.entities.Singer;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -20,8 +22,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SingerJPATest {
-    private static Logger logger = LoggerFactory.getLogger(SingerJPATest.class);
+    private static final Logger logger = LoggerFactory.getLogger(SingerJPATest.class);
 
     private GenericApplicationContext ctx;
     private SingerService singerService;
@@ -71,36 +74,33 @@ public class SingerJPATest {
         singer.setFirstName("BB");
         singer.setLastName("King");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
+                (new GregorianCalendar(1940, Calendar.SEPTEMBER, 16)).getTime().getTime()));
 
         Album album = new Album();
         album.setTitle("My Kind of Blues");
         album.setReleaseDate(new java.sql.Date(
-                (new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
+                (new GregorianCalendar(1961, Calendar.AUGUST, 18)).getTime().getTime()));
         singer.addAlbum(album);
 
         album = new Album();
         album.setTitle("A Heart Full of Blues");
         album.setReleaseDate(new java.sql.Date(
-                (new GregorianCalendar(1962, 3, 20)).getTime().getTime()));
+                (new GregorianCalendar(1962, Calendar.APRIL, 20)).getTime().getTime()));
         singer.addAlbum(album);
 
         singerService.save(singer);
         assertNotNull(singer.getId());
 
         List<Singer> singers = singerService.findAllWithAlbum();
-        assertEquals(4, singers.size());
+        assertEquals(3, singers.size());
         listSingersWithAlbum(singers);
     }
 
     @Test
     public void testUpdate(){
         Singer singer = singerService.findById(1L);
-        //making sure such singer exists
         assertNotNull(singer);
-        //making sure we got expected record
         assertEquals("Mayer", singer.getLastName());
-        //retrieve the album
         Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies")).findFirst().get();
 
         singer.setFirstName("John Clayton");
@@ -113,8 +113,7 @@ public class SingerJPATest {
 
     @Test
     public void testDelete(){
-        Singer singer = singerService.findById(2l);
-        //making sure such singer exists
+        Singer singer = singerService.findById(2L);
         assertNotNull(singer);
         singerService.delete(singer);
 

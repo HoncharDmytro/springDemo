@@ -15,7 +15,9 @@
 
     <context:property-placeholder location="classpath:jpa_crud/properties/jpa.properties"/>
 
-<!--    <context:component-scan base-package="com.honchar.springDemo.chapter08.jpa.jpa_crud" />-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <context:component-scan base-package="com.honchar.springDemo.chapter08.jpa.jpa_crud.dao" />
 
     <bean id="dataSource"
           class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
@@ -30,8 +32,6 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter">
@@ -41,8 +41,8 @@
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">${dialect}</prop>
-<!--                <prop key="hibernate.format_sql">true</prop>-->
-<!--                <prop key="hibernate.use_sql_comments">true</prop>-->
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.use_sql_comments">true</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.max_fetch_depth">3</prop>
                 <prop key="hibernate.jdbc.batch_size">10</prop>

@@ -14,6 +14,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -34,7 +35,7 @@ public class TestBase {
         //ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         // OR //
         ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:app-context2.xml");
+        ctx.load("classpath:app-context.xml");
         ctx.refresh();
         //1111111111111111111111111111111111111
 
@@ -69,25 +70,25 @@ public class TestBase {
         singer.setFirstName("BB");
         singer.setLastName("King");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
+                (new GregorianCalendar(1940, Calendar.SEPTEMBER, 16)).getTime().getTime()));
 
         Album album = new Album();
         album.setTitle("My Kind of Blues");
         album.setReleaseDate(new java.sql.Date(
-                (new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
+                (new GregorianCalendar(1961, Calendar.AUGUST, 18)).getTime().getTime()));
         singer.addAlbum(album);
 
         album = new Album();
         album.setTitle("A Heart Full of Blues");
         album.setReleaseDate(new java.sql.Date(
-                (new GregorianCalendar(1962, 3, 20)).getTime().getTime()));
+                (new GregorianCalendar(1962, Calendar.APRIL, 20)).getTime().getTime()));
         singer.addAlbum(album);
 
         singerDao.save(singer);
         assertNotNull(singer.getId());
 
         List<Singer> singers = singerDao.findAllWithAlbum();
-        assertEquals(4, singers.size());
+        assertEquals(3, singers.size());
         listSingersWithAlbum(singers);
     }
 

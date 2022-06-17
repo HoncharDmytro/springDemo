@@ -19,6 +19,10 @@
 
     <context:property-placeholder location="classpath:spring_data_jpa/properties/jpa.properties"/>
 
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <context:component-scan base-package="com.honchar.springDemo.chapter08.jpa.spring_data_jpa" />
+
     <bean id="dataSource"
           class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${driverClassName}"/>
@@ -32,8 +36,6 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
-
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter">
@@ -44,10 +46,13 @@
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">${dialect}</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="hibernate.use_sql_comments">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.max_fetch_depth">3</prop>
                 <prop key="hibernate.jdbc.fetch_size">50</prop>
                 <prop key="hibernate.jdbc.batch_size">10</prop>
-                <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
     </bean>
@@ -64,6 +69,4 @@
     <jpa:repositories base-package="com.honchar.springDemo.chapter08.jpa.spring_data_jpa.repository"
                       entity-manager-factory-ref="entityManagerFactory"
                       transaction-manager-ref="transactionManager"/>
-
-<!--    <jpa:auditing auditor-aware-ref="auditorAwareBean"/>-->
 </beans>
