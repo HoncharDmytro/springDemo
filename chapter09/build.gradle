@@ -14,11 +14,12 @@ repositories {
 
 ext {
 
-    springVersion = '5.3.20'
+    ver = [springVersion: "5.3.20"];
+    aboba = [springContextSuport: "org.springframework:spring-context-support:${ver.springVersion}"];
 
 }
 //
-def aboba = [springContextSuport: "org.springframework:spring-context-support:${springVersion}"]
+
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
