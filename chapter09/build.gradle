@@ -12,13 +12,13 @@ repositories {
     mavenCentral()
 }
 
-//ext {
+ext {
+
+    springVersion = '5.3.20'
+
+}
 //
-//    springVersion = '5.3.20'
-//
-//}
-//
-//def aboba = [springContextSuport: "org.springframework:spring-context-support:"]
+def aboba = [springContextSuport: "org.springframework:spring-context-support:${springVersion}"]
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
@@ -37,7 +37,7 @@ dependencies {
     implementation 'org.springframework:spring-tx:5.3.20'
     implementation 'org.springframework:spring-jdbc:5.3.20'
     implementation 'org.springframework:spring-context-support:5.3.20'
-    //implementation aboba.springContextSuport + springVersion
+    implementation aboba.springContextSuport
     implementation 'org.springframework:spring-orm:5.3.20'
     testImplementation 'org.springframework:spring-test:5.3.20'
 
