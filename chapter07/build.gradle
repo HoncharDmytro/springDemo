@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot'
 }
 
 group 'com.honchar'
@@ -10,26 +11,22 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation testing.jupiterApi
+    testRuntimeOnly testing.jupiterEngine
 
-    implementation 'org.slf4j:slf4j-simple:1.7.36'
-    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation misc.slf4jSimple, misc.slf4jApi
 
-    implementation 'mysql:mysql-connector-java:8.0.29'
-    implementation 'org.postgresql:postgresql:42.4.0'
-    implementation 'org.hibernate:hibernate-core:5.6.9.Final'
+    implementation (
+            hibernate.core, db.mysql, db.postgres, db.dbcp2
+    )
 
-    implementation 'org.springframework:spring-orm:5.3.20'
-    implementation 'org.springframework:spring-beans:5.3.20'
-    implementation 'org.springframework:spring-context:5.3.20'
-    implementation 'org.springframework.boot:spring-boot:2.7.0'
-    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.0'
-    implementation 'org.springframework.boot:spring-boot-gradle-plugin:2.7.0'
+    implementation (
+            spring.orm, spring.beans, spring.context
+    )
 
-    // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
-    implementation 'org.apache.commons:commons-dbcp2:2.9.0'
-
+    implementation (
+            boot.springBootPlugin
+    )
 }
 
 test {

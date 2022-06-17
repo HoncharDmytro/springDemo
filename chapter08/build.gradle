@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot'
 }
 
 group 'com.honchar'
@@ -10,34 +11,24 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation testing.jupiterApi
+    testRuntimeOnly testing.jupiterEngine
 
-    implementation 'org.slf4j:slf4j-simple:1.7.36'
-    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation misc.slf4jSimple, misc.slf4jApi
 
-    implementation 'mysql:mysql-connector-java:8.0.29'
-    implementation 'org.postgresql:postgresql:42.4.0'
-    implementation 'org.hibernate:hibernate-core:5.6.9.Final'
-    implementation 'org.hibernate:hibernate-envers:5.6.9.Final'
+    implementation (
+            hibernate.em, hibernate.envers, hibernate.core, db.mysql, db.postgres, db.dbcp2
+    )
 
-    implementation 'org.apache.commons:commons-dbcp2:2.9.0'
+    implementation (
+            spring.orm, spring.beans, spring.context, spring.data, spring.aop, spring.aspects
+    )
 
-    implementation 'org.springframework:spring-orm:5.3.20'
-    implementation 'org.springframework:spring-beans:5.3.20'
-    implementation 'org.springframework:spring-context:5.3.20'
-    implementation 'org.springframework.data:spring-data-jpa:2.7.0'
-    implementation 'org.springframework:spring-aop:5.3.20'
-    implementation 'org.springframework:spring-aspects:5.3.20'
-    implementation 'org.springframework.boot:spring-boot:2.7.0'
-    implementation 'org.springframework.boot:spring-boot-gradle-plugin:2.7.0'
-    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.7.0'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.0'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.7.0'
+    implementation (
+            boot.springBootPlugin, boot.starterJpa, boot.starterJta, boot.starterJms
+    )
 
-    // https://mvnrepository.com/artifact/com.google.guava/guava
-    implementation 'com.google.guava:guava:23.0'
-//    exclude 'ch.qos.logback:logback-classic:1.2.11'
+    implementation misc.guava
 }
 
 test {
