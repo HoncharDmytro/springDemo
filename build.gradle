@@ -14,8 +14,11 @@ repositories {
 
 ext {
 
-	ver = [springVersion: "5.3.20"]
-	aboba = [springContextSuport: "org.springframework:spring-context-support:${ver.springVersion}"]
+	springVersion = '5.3.20'
+
+	aboba = [
+			springContextSuport: "org.springframework:spring-context-support:${springVersion}"
+	]
 
 }
 
