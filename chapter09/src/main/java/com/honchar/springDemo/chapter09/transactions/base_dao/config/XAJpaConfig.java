@@ -39,9 +39,9 @@ public class XAJpaConfig {
 	@Bean
 	public Properties xaAProperties() {
 		Properties xaProp = new Properties();
-		xaProp.put("databaseName", "musicdb_a");
-		xaProp.put("user", "prospring5_A");
-		xaProp.put("password", "prospring5_A");
+		xaProp.put("databaseName", "musicdb9_1");
+		xaProp.put("user", "test2");
+		xaProp.put("password", "1111");
 		return xaProp;
 	}
 
@@ -64,9 +64,9 @@ public class XAJpaConfig {
 	@Bean
 	public Properties xaBProperties() {
 		Properties xaProp = new Properties();
-		xaProp.put("databaseName", "musicdb_b");
-		xaProp.put("user", "prospring5_B");
-		xaProp.put("password", "prospring5_B");
+		xaProp.put("databaseName", "musicdb9_2");
+		xaProp.put("user", "test2");
+		xaProp.put("password", "2222");
 		return xaProp;
 	}
 

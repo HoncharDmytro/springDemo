@@ -18,9 +18,9 @@ dependencies {
 
     implementation  misc.slf4jApi, misc.lang3, misc.guava, misc.artemis
 
-    implementation spring.beans, spring.context, spring.tx, spring.contextSupport, spring.orm, spring.data
-
-    implementation boot.springBootPlugin, boot.starterJms
+    //implementation spring.beans, spring.context, spring.tx, spring.contextSupport, spring.orm, spring.data
+    implementation spring.contextSupport, spring.jms, spring.data
+    implementation boot.springBootPlugin, boot.starterJms, boot.starterJta
 
     implementation hibernate.em, hibernate.tx, db.mysql, db.postgres, db.dbcp2
 }

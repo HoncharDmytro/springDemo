@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-@SpringBootApplication(scanBasePackages = "com.honchar.springDemo.chapter09.transactions.boot_jta.services")
+@SpringBootApplication(scanBasePackages = "com.honchar.springDemo.chapter09.transactions.boot_jta")
 public class Application implements CommandLineRunner {
 
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
