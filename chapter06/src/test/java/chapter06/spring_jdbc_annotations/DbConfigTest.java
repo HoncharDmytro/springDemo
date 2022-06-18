@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 //@Disabled  // requires a mysql database
 public class DbConfigTest {
 
-    private static Logger logger = LoggerFactory.getLogger(DbConfigTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(DbConfigTest.class);
 
     @Test
     public void testOne() throws SQLException {

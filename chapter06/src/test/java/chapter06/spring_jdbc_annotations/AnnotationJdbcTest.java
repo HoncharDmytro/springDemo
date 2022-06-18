@@ -12,6 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.GenericApplicationContext;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class AnnotationJdbcTest {
         singer.setFirstName("Van");
         singer.setLastName("Mayer");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1977, 9, 16)).getTime().getTime()));
+                (new GregorianCalendar(1977, Calendar.OCTOBER, 16)).getTime().getTime()));
         singerDao.update(singer);
 
         List<Singer> singers = singerDao.findAll();
@@ -68,7 +69,7 @@ public class AnnotationJdbcTest {
         singer.setFirstName("Ed");
         singer.setLastName("Sheeran");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1991, 1, 17)).getTime().getTime()));
+                (new GregorianCalendar(1991, Calendar.FEBRUARY, 17)).getTime().getTime()));
         singerDao.insert(singer);
 
         List<Singer> singers = singerDao.findAll();
@@ -81,18 +82,18 @@ public class AnnotationJdbcTest {
         singer.setFirstName("BB");
         singer.setLastName("King");
         singer.setBirthDate(new Date(
-                (new GregorianCalendar(1940, 8, 16)).getTime().getTime()));
+                (new GregorianCalendar(1940, Calendar.SEPTEMBER, 16)).getTime().getTime()));
 
         Album album = new Album();
         album.setTitle("My Kind of Blues");
         album.setReleaseDate(new Date(
-                (new GregorianCalendar(1961, 7, 18)).getTime().getTime()));
+                (new GregorianCalendar(1961, Calendar.AUGUST, 18)).getTime().getTime()));
         singer.addAlbum(album);
 
         album = new Album();
         album.setTitle("A Heart Full of Blues");
         album.setReleaseDate(new Date(
-                (new GregorianCalendar(1962, 3, 20)).getTime().getTime()));
+                (new GregorianCalendar(1962, Calendar.APRIL, 20)).getTime().getTime()));
         singer.addAlbum(album);
 
         singerDao.insertWithAlbum(singer);
