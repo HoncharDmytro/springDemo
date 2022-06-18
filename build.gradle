@@ -63,7 +63,7 @@ ext {
 
 	//testing libs
 	mockitoVersion = '2.0.2-beta'
-	jupiterVersion = '4.12'
+	jupiterVersion = '5.8.0'
 	hamcrestVersion = '2.2'
 	dbunitVersion = '2.7.3'
 

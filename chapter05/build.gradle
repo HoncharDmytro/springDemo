@@ -17,6 +17,8 @@ dependencies {
     implementation misc.slf4jJcl, misc.aspectjtools
 
     implementation spring.beans, spring.context, spring.aop
+
+    implementation boot.starter
 }
 
 test {

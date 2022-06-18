@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot'
 }
 
 group 'com.honchar'
@@ -22,10 +21,6 @@ dependencies {
 
     implementation (
             spring.orm, spring.beans, spring.context
-    )
-
-    implementation (
-            boot.springBootPlugin
     )
 }
 

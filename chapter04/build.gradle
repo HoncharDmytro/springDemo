@@ -11,6 +11,9 @@ repositories {
     mavenCentral()
 }
 
+apply plugin: 'application'
+mainClassName = 'com.honchar.springDemo.chapter04.springBootWeb.WebApplication'
+
 dependencies {
     testImplementation testing.jupiterApi
     testRuntimeOnly testing.jupiterEngine
@@ -19,7 +22,7 @@ dependencies {
 
     implementation spring.context
 
-    implementation boot.springBootPlugin
+    implementation boot.springBootPlugin, boot.starter, boot.starterWeb
 
 //    implementation project(':chapter02')
 //    implementation project(':chapter03')
