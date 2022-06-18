@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
 
 //@Service
 public class DBInitializer {
-	private Logger logger = LoggerFactory.getLogger(DBInitializer.class);
+	private final Logger logger = LoggerFactory.getLogger(DBInitializer.class);
 
 	//@Autowired
 	SingerAuditRepository singerRepository;

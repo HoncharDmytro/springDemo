@@ -22,13 +22,12 @@ import java.util.Map;
 @Repository("singerDao")
 public class JdbcSingerDao implements SingerDao {
 
-    private static Logger logger = LoggerFactory.getLogger(JdbcSingerDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(JdbcSingerDao.class);
     private DataSource dataSource;
     private SelectAllSingers selectAllSingers;
     private SelectSingerByFirstName selectSingerByFirstName;
     private UpdateSinger updateSinger;
     private InsertSinger insertSinger;
-    private InsertSingerAlbum insertSingerAlbum;
     private DeleteSinger deleteSinger;
     private StoredFunctionFirstNameById storedFunctionFirstNameById;
 
@@ -64,7 +63,7 @@ public class JdbcSingerDao implements SingerDao {
 
     @Override
     public void insertWithAlbum(Singer singer) {
-        insertSingerAlbum = new InsertSingerAlbum(dataSource);
+        InsertSingerAlbum insertSingerAlbum = new InsertSingerAlbum(dataSource);
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("first_name", singer.getFirstName());
         paramMap.put("last_name", singer.getLastName());
@@ -73,8 +72,7 @@ public class JdbcSingerDao implements SingerDao {
         insertSinger.updateByNamedParam(paramMap, keyHolder);
         singer.setId(keyHolder.getKey().longValue());
         logger.info("New singer inserted with id: " + singer.getId());
-        List<Album> albums =
-                singer.getAlbums();
+        List<Album> albums = singer.getAlbums();
         if (albums != null) {
             for (Album album : albums) {
                 paramMap = new HashMap<>();
@@ -108,7 +106,7 @@ public class JdbcSingerDao implements SingerDao {
                     singer.setAlbums(new ArrayList<>());
                     map.put(id, singer);
                 }
-                Long albumId = rs.getLong("album_id");
+                long albumId = rs.getLong("album_id");
                 if (albumId > 0) {
                     Album album = new Album();
                     album.setId(albumId);

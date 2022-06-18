@@ -12,16 +12,9 @@ repositories {
 dependencies {
     testImplementation testing.jupiterApi
     testRuntimeOnly testing.jupiterEngine
-
-    implementation misc.slf4jSimple, misc.slf4jApi
-
-    implementation (
-            hibernate.core, db.mysql, db.postgres, db.dbcp2
-    )
-
-    implementation (
-            spring.orm, spring.beans, spring.context
-    )
+    implementation misc.slf4jApi
+    implementation hibernate.core, db.mysql, db.postgres, db.dbcp2
+    implementation spring.orm, spring.beans, spring.context
 }
 
 test {

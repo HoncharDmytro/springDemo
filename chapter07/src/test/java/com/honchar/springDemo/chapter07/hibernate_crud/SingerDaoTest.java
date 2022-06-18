@@ -97,7 +97,8 @@ public class SingerDaoTest {
 		Singer singer = singerDao.findById(1L);
 		assertNotNull(singer);
 		assertEquals("Mayer", singer.getLastName());
-		Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies")).findFirst().get();
+		Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies"))
+				.findFirst().orElse(null);
 
 		singer.setFirstName("John Clayton");
 		singer.removeAlbum(album);

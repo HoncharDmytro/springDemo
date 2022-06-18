@@ -16,7 +16,7 @@ public class InsertSinger extends SqlUpdate {
         super.declareParameter(new SqlParameter("first_name", Types.VARCHAR));
         super.declareParameter(new SqlParameter("last_name", Types.VARCHAR));
         super.declareParameter(new SqlParameter("birth_date", Types.DATE));
-        super.setGeneratedKeysColumnNames(new String[] {"id"});
+        super.setGeneratedKeysColumnNames("id");
         super.setReturnGeneratedKeys(true);
     }
 

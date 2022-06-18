@@ -11,33 +11,17 @@ repositories {
 
 dependencies {
 
-    testRuntimeOnly (testing.jupiterEngine)
-
-//    implementation misc.slf4jSimple, misc.slf4jApi
-
-    implementation (
-            misc.slf4jJcl, misc.logback, misc.lang3, misc.guava
-    )
-
+    testImplementation testing.jupiterApi, spring.test
+    testRuntimeOnly testing.jupiterEngine
+//    misc.slf4jJcl, misc.logback,
+    implementation  misc.slf4jApi, misc.lang3, misc.guava
     implementation (
             spring.core, spring.beans, spring.context, spring.aop, spring.aspects, spring.tx,
             spring.jdbc, spring.contextSupport, spring.orm, spring.data
     )
-
-    implementation (
-            boot.springBootPlugin, boot.starterJpa
-    )
-
-    implementation (
-            hibernate.em, hibernate.tx, db.mysql, db.postgres
-    )
-
-    testImplementation (
-            spring.test, testing.jupiterApi
-    )
-
+    implementation boot.springBootPlugin, boot.starterJpa
+    implementation hibernate.em, hibernate.tx, db.mysql, db.postgres
     runtimeOnly (misc.aspectjweaver)
-
 }
 
 test {

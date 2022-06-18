@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS musicdb;
+CREATE DATABASE IF NOT EXISTS musicdb6;
 
-CREATE TABLE musicdb.singer (
+CREATE TABLE musicdb6.singer (
     id INT NOT NULL AUTO_INCREMENT
     , first_name VARCHAR(60) NOT NULL
     , last_name VARCHAR(40) NOT NULL
@@ -9,7 +9,7 @@ CREATE TABLE musicdb.singer (
     , PRIMARY KEY (id)
 );
 
-CREATE TABLE musicdb.album (
+CREATE TABLE musicdb6.album (
     id INT NOT NULL AUTO_INCREMENT
     , singer_id INT NOT NULL
     , title VARCHAR(100) NOT NULL

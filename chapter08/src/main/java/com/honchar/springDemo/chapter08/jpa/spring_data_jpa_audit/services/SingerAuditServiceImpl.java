@@ -22,7 +22,7 @@ public class SingerAuditServiceImpl implements SingerAuditService {
     }
 
     public SingerAudit findById(Long id) {
-        return singerAuditRepository.findById(id).get();
+        return singerAuditRepository.findById(id).orElse(null);
     }
 
     public SingerAudit save(SingerAudit singer) {

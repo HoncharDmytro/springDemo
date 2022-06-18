@@ -13,8 +13,7 @@ repositories {
 dependencies {
     testImplementation testing.jupiterApi
     testRuntimeOnly testing.jupiterEngine
-
-    implementation misc.slf4jSimple, misc.slf4jApi
+    implementation misc.slf4jApi
 
     implementation (
             hibernate.em, hibernate.envers, hibernate.core, db.mysql, db.postgres, db.dbcp2

@@ -27,23 +27,17 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     @Override public String findNameById(Long id) {
         return jdbcTemplate.queryForObject("SELECT CONCAT_WS(' ', first_name, last_name) " +
-                "FROM singer WHERE id = ?", new Object[]{id}, String.class);
+                "FROM singer WHERE id = ?", String.class, id);
     }
 
     @Override
     public String findFirstNameById(Long id) {
         return jdbcTemplate.queryForObject(
-                "SELECT first_name FROM singer WHERE id = ?", new Object[]{id}, String.class);
+                "SELECT first_name FROM singer WHERE id = ?", String.class, id);
     }
 
     @Override public List<Singer> findAll() {
-        List<Singer> data =jdbcTemplate.queryForList("SELECT * FROM singer",Singer.class);
-        return data;
-        //return jdbcTemplate.queryForList("SELECT * FROM singer", Singer.class);
-
-        //List<Singer> data =jdbcTemplate.queryForList("SELECT CONCAT_WS(' ', first_name, last_name) FROM singer",
-        // Singer.class);
-
+        throw new NotImplementedException("findAll");
     }
 
     @Override public List<Singer> findByFirstName(String firstName) {
@@ -59,14 +53,11 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
     }
 
     @Override public void update(Singer singer) {
-        String updateQuery = "UPDATE singer t SET t.first_name = ?, t.last_name  = ? WHERE t.id = ?";
-        jdbcTemplate.update(updateQuery, new Object[]{singer.getLastName()},
-                new Object[]{singer.getLastName()}, new Object[]{singer.getId()});
+        throw new NotImplementedException("update");
     }
 
     @Override public void delete(Long singerId) {
-        jdbcTemplate.queryForObject(
-                "DELETE FROM singer WHERE id = ?", new Object[]{singerId}, String.class);
+        throw new NotImplementedException("delete");
     }
 
     @Override public List<Singer> findAllWithAlbums() {

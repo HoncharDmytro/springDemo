@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HelloWorld {
 
-    private static Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+    private static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
 
     public void sayHi() {
         logger.info("Hello World!");

@@ -7,12 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 public class PlainJdbcDemo {
-    private static SingerDao singerDao = new PlainSingerDao();
-    private static Logger logger = LoggerFactory.getLogger(PlainJdbcDemo.class);
+    private static final SingerDao singerDao = new PlainSingerDao();
+    private static final Logger logger = LoggerFactory.getLogger(PlainJdbcDemo.class);
 
     public static void main(String... args) {
         logger.info("Listing initial singer data:");
@@ -25,7 +26,8 @@ public class PlainJdbcDemo {
         Singer singer = new Singer();
         singer.setFirstName("Ed");
         singer.setLastName("Sheeran");
-        singer.setBirthDate(new Date((new GregorianCalendar(1991, 2, 1991)).getTime().getTime()));
+        singer.setBirthDate(new Date((new GregorianCalendar(1991, Calendar.MARCH,
+                1991)).getTime().getTime()));
         singerDao.insert(singer);
         logger.info("The singer has ID now: " + singer.getId());
 

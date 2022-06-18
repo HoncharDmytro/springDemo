@@ -3,13 +3,12 @@ package com.honchar.springDemo.chapter02.decoupled;
 import java.util.Properties;
 
 public class MessageSupportFactory {
-    private static MessageSupportFactory instance;
-    private Properties props;
+    private static final MessageSupportFactory instance;
     private MessageRenderer renderer;
     private MessageProvider provider;
 
     private MessageSupportFactory() {
-        props = new Properties();
+        Properties props = new Properties();
         try {
             props.load(this.getClass().getResourceAsStream("/msf.properties"));
             String rendererClass = props.getProperty("renderer.class");

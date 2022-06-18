@@ -13,11 +13,8 @@ repositories {
 dependencies {
     testImplementation testing.jupiterApi
     testRuntimeOnly testing.jupiterEngine
-
-    implementation misc.slf4jJcl, misc.aspectjtools
-
+    implementation misc.slf4jApi, misc.aspectjtools
     implementation spring.beans, spring.context, spring.aop
-
     implementation boot.starter
 }
 

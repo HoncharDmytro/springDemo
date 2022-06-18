@@ -13,11 +13,11 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:db2/jdbc2.properties")
+@PropertySource("classpath:db2/jdbc.properties")
 @ComponentScan(basePackages = "com.honchar.springDemo.chapter06")
 public class AppConfig {
 
-    private static Logger logger = LoggerFactory.getLogger(AppConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(AppConfig.class);
     @Value("${driverClassName}")
     private String driverClassName;
     @Value("${url}")
@@ -33,7 +33,7 @@ public class AppConfig {
     }
 
     @Bean(destroyMethod = "close")
-    public DataSource dataSource() {
+    public BasicDataSource dataSource() {
         try {
             BasicDataSource dataSource = new BasicDataSource();
             dataSource.setDriverClassName(driverClassName);

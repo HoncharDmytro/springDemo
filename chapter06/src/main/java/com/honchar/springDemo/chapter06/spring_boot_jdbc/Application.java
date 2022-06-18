@@ -10,26 +10,19 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class Application {
 
-    private static Logger logger = LoggerFactory.getLogger(Application.class);
+    private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) throws Exception {
         ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
         assert (ctx != null);
 
         SingerDao singerDao = ctx.getBean(SingerDao.class);
-        //String singerName = singerDao.findFirstNameById(1L);
         String singerName = singerDao.findNameById(1L);
-        logger.info("Retrieved singer: " + singerName);
+        String singerFirstName = singerDao.findFirstNameById(2L);
+        logger.info("Retrieved singer full name: " + singerName);
+        logger.info("Retrieved singer first name: " + singerFirstName);
 
-
-//      List<Singer> allSingers = singerDao.findAll();
-
-//        for (Singer name : allSingers) {
-//            logger.info(name.getFirstName() + " " + name.getLastName());
-//        }
-
-
-        //System.in.read();
+        System.in.read();
         ctx.close();
     }
 }
