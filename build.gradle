@@ -146,6 +146,7 @@ ext {
 			logback        : "ch.qos.logback:logback-classic:${logbackVersion}",
 			groovy         : "org.codehaus.groovy:groovy-all:${groovyVersion}",
 			validation     : "javax.validation:validation-api:${javaxValidationVersion}",
+			aspectjtools   : "org.aspectj:aspectjtools:${aspectjVersion}",
 			aspectjweaver  : "org.aspectj:aspectjweaver:${aspectjVersion}",
 			aspectjrt      : "org.aspectj:aspectjrt:${aspectjVersion}",
 			guava          : "com.google.guava:guava:${guavaVersion}",

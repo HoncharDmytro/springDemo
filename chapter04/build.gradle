@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-//    id 'org.springframework.boot' version '2.7.0'
-//    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot'
+//    id 'io.spring.dependency-management'
 }
 
 group 'com.honchar'
@@ -12,16 +12,14 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation 'org.springframework:spring-context:5.3.20'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
+    testImplementation testing.jupiterApi
+    testRuntimeOnly testing.jupiterEngine
 
-    implementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
-    implementation 'org.springframework.boot:spring-boot-gradle-plugin:2.7.0'
-    // https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j
-    implementation 'org.slf4j:jcl-over-slf4j:1.7.30'
+    implementation misc.slf4jJcl
+
+    implementation spring.context
+
+    implementation boot.springBootPlugin
 
 //    implementation project(':chapter02')
 //    implementation project(':chapter03')

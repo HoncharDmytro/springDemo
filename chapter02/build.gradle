@@ -10,9 +10,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation 'org.springframework:spring-context:5.3.10'
+    testImplementation testing.jupiterApi
+    testRuntimeOnly testing.jupiterEngine
+    implementation spring.context
 }
 
 test {
