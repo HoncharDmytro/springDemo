@@ -12,7 +12,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import javax.persistence.EntityManagerFactory;
 
 @Configuration
-@ComponentScan(basePackages = "com.honchar.springDemo.chapter09.transactions.transactions_programmatic")
+@ComponentScan(basePackages = "com.honchar.springDemo.chapter09.transactions")
 public class ServicesConfig {
 
 	@Autowired EntityManagerFactory entityManagerFactory;

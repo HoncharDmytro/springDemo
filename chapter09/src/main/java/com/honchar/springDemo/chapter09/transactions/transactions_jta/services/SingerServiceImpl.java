@@ -1,5 +1,8 @@
 package com.honchar.springDemo.chapter09.transactions.transactions_jta.services;
 
+import com.honchar.springDemo.chapter09.transactions.base_dao.entities.Singer;
+import com.honchar.springDemo.chapter09.transactions.base_dao.services.SingerService;
+import com.honchar.springDemo.chapter09.transactions.transactions_jta.ex.AsyncXAResourcesException;
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Repository;

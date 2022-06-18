@@ -18,7 +18,8 @@ public class TxAnnotationDemo {
         SingerService singerService = ctx.getBean(SingerService.class);
 
         List<Singer> singers = singerService.findAll();
-        singers.forEach(s -> System.out.println(s));
+        singers.forEach(System.out::println);
+        //singers.forEach(s -> System.out.println(s));
 
         Singer singer = singerService.findById(1L);
         singer.setFirstName("John Clayton");

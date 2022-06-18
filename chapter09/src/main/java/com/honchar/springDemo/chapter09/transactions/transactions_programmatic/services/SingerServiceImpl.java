@@ -1,6 +1,8 @@
 package com.honchar.springDemo.chapter09.transactions.transactions_programmatic.services;
 
 import com.google.common.collect.Lists;
+import com.honchar.springDemo.chapter09.transactions.base_dao.entities.Singer;
+import com.honchar.springDemo.chapter09.transactions.base_dao.repos.SingerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -26,12 +28,6 @@ public class SingerServiceImpl implements SingerService {
 		return Lists.newArrayList(singerRepository.findAll());
 	}
 
-	/**
-	 * API  changed in  2.0.0.M3 findOne became findById
-	 *
-	 * @param id
-	 * @return
-	 */
 	@Override
 	public Singer findById(Long id) {
 		return singerRepository.findById(id).get();
