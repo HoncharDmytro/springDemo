@@ -9,7 +9,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class TxDeclarativeDemo {
     public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring/tx-declarative-app-context.xml");
+        ctx.load("classpath:base_dao/spring/tx-declarative-app-context.xml");
         ctx.refresh();
 
         SingerService singerService = ctx.getBean(SingerService.class);

@@ -23,7 +23,7 @@ public class SingerServiceImpl implements SingerService {
 
     @Override
     public Singer findById(Long id) {
-        return singerRepository.findById(id).get();
+        return singerRepository.findById(id).orElse(new Singer());
     }
 
     @Override
