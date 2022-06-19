@@ -40,8 +40,8 @@ public class XAJpaConfig {
 	public Properties xaAProperties() {
 		Properties xaProp = new Properties();
 		xaProp.put("databaseName", "musicdb9_1");
-		xaProp.put("user", "test2");
-		xaProp.put("password", "1111");
+		xaProp.put("user", "test1");
+		xaProp.put("password", "test1");
 		return xaProp;
 	}
 
@@ -66,7 +66,7 @@ public class XAJpaConfig {
 		Properties xaProp = new Properties();
 		xaProp.put("databaseName", "musicdb9_2");
 		xaProp.put("user", "test2");
-		xaProp.put("password", "2222");
+		xaProp.put("password", "test2");
 		return xaProp;
 	}
 
@@ -84,7 +84,7 @@ public class XAJpaConfig {
 		hibernateProp.put(FLUSH_BEFORE_COMPLETION, false);
 		hibernateProp.put(DIALECT, "org.hibernate.dialect.MySQL57Dialect");
 		// this will work only if users/schemas are created first, use ddl.sql script for this
-		hibernateProp.put(HBM2DDL_AUTO, "create-drop");
+//		hibernateProp.put(HBM2DDL_AUTO, "create-drop");
 		hibernateProp.put(SHOW_SQL, true);
 		hibernateProp.put(MAX_FETCH_DEPTH, 3);
 		hibernateProp.put(STATEMENT_BATCH_SIZE, 10);

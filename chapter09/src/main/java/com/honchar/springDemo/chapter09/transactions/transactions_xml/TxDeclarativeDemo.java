@@ -21,7 +21,7 @@ public class TxDeclarativeDemo {
         singer.setFirstName("John Clayton");
         singerService.save(singer);
         System.out.println("Singer saved successfully: " + singer);
-        System.out.println("Singer count: " + singerService.countAll());
+        //System.out.println("Singer count: " + singerService.countAll());
 
         ctx.close();
     }

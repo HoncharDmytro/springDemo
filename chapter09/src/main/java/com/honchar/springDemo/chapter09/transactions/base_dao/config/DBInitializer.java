@@ -13,14 +13,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-@Service
+//Service
 public class DBInitializer {
 	private final Logger logger = LoggerFactory.getLogger(DBInitializer.class);
 
-	@Autowired
+	//@Autowired
 	SingerRepository singerRepository;
 
-	@PostConstruct
+	//@PostConstruct
 	public void initDB(){
 		logger.info("Starting database initialization...");
 
