@@ -15,7 +15,7 @@ dependencies {
     testRuntimeOnly testing.jupiterEngine
     implementation misc.slf4jApi, misc.aspectjtools
     implementation spring.beans, spring.context, spring.aop
-    implementation boot.starter
+    implementation boot.starterAop
 }
 
 test {

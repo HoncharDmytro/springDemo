@@ -17,7 +17,8 @@ repositories {
 ext {
 	//spring libs
 	springVersion = '5.3.20'
-	bootVersion = '2.7.0'
+	//bootVersion = '2.7.0'           //New with jakarta
+	bootVersion = '2.1.18.RELEASE'    //Old with javax
 	springDataVersion = '2.7.0'
 	springAmqpVersion = '2.4.4'
 	springSecurityVersion = '5.7.0'
@@ -78,7 +79,7 @@ ext {
 			jdbc              : "org.springframework:spring-jdbc:${springVersion}",
 			contextSupport    : "org.springframework:spring-context-support:${springVersion}",
 			orm               : "org.springframework:spring-orm:${springVersion}",
-			data              : "org.springframework.data:spring-data-jpa:${springDataVersion}",
+			dataJpa           : "org.springframework.data:spring-data-jpa:${springDataVersion}",
 			test              : "org.springframework:spring-test:${springVersion}",
 			jms               : "org.springframework:spring-jms:${springVersion}",
 			oxm               : "org.springframework:spring-oxm:${springVersion}",
@@ -111,7 +112,6 @@ ext {
 
 	boot = [
 			springBootPlugin: "org.springframework.boot:spring-boot-gradle-plugin:${bootVersion}",
-			starter         : "org.springframework.boot:spring-boot-starter:${bootVersion}",
 			starterWeb      : "org.springframework.boot:spring-boot-starter-web:${bootVersion}",
 			actuator        : "org.springframework.boot:spring-boot-starter-actuator:${bootVersion}",
 			starterTest     : "org.springframework.boot:spring-boot-starter-test:${bootVersion}",
@@ -119,7 +119,7 @@ ext {
 			starterJdbc     : "org.springframework.boot:spring-boot-starter-jdbc:${bootVersion}",
 			starterJpa      : "org.springframework.boot:spring-boot-starter-data-jpa:${bootVersion}",
 			starterJta      : "org.springframework.boot:spring-boot-starter-jta-atomikos:${bootVersion}",
-			starterJms      : "org.springframework.boot:spring-boot-starter-artemis:${bootVersion}",
+			starterArtemis  : "org.springframework.boot:spring-boot-starter-artemis:${bootVersion}",
 			starterRabbitmq : "org.springframework.boot:spring-boot-starter-amqp:${bootVersion}",
 			starterThyme    : "org.springframework.boot:spring-boot-starter-thymeleaf:${bootVersion}",
 			starterSecurity : "org.springframework.boot:spring-boot-starter-security:${bootVersion}",

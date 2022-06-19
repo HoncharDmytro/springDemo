@@ -20,11 +20,11 @@ dependencies {
     )
 
     implementation (
-            spring.orm, spring.beans, spring.context, spring.data, spring.aop, spring.aspects
+            spring.orm, spring.beans, spring.context, spring.dataJpa, spring.aop, spring.aspects
     )
 
     implementation (
-            boot.springBootPlugin, boot.starterJpa, boot.starterJta, boot.starterJms
+            boot.springBootPlugin, boot.starterJpa, boot.starterJta, boot.starterArtemis
     )
 
     implementation misc.guava

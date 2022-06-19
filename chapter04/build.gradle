@@ -19,7 +19,7 @@ dependencies {
     testRuntimeOnly testing.jupiterEngine
     implementation misc.slf4jApi
     implementation spring.context
-    implementation boot.springBootPlugin, boot.starter, boot.starterWeb
+    implementation boot.springBootPlugin, boot.starterWeb
 }
 
 test {
