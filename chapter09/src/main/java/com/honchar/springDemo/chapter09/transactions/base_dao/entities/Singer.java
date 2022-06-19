@@ -12,12 +12,12 @@ import javax.persistence.*;
 @Table(name = "singer")
 @NamedQueries({
         @NamedQuery(name=Singer.FIND_ALL, query="select s from Singer s"),
-        @NamedQuery(name=Singer.COUNT_ALL, query="select count(s) from Singer s")
+        @NamedQuery(name=Singer.COUNT_ALL_SINGERS, query="select count(s) from Singer s")
 })
 public class Singer implements Serializable {
 
     public static final String FIND_ALL = "Singer.findAll";
-    public static final String COUNT_ALL = "Singer.countAll";
+    public static final String COUNT_ALL_SINGERS = "Singer.countAllSingers";
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

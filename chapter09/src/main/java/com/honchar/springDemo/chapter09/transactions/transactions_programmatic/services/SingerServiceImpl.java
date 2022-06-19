@@ -40,7 +40,7 @@ public class SingerServiceImpl implements SingerService {
 
 	@Override
 	public long countAll() {
-		return transactionTemplate.execute(transactionStatus -> em.createNamedQuery(Singer.COUNT_ALL,
+		return transactionTemplate.execute(transactionStatus -> em.createNamedQuery(Singer.COUNT_ALL_SINGERS,
 				Long.class).getSingleResult());
 	}
 }

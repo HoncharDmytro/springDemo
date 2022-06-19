@@ -83,8 +83,8 @@ public class XAJpaConfig {
 		hibernateProp.put(AUTOCOMMIT, false);
 		hibernateProp.put(FLUSH_BEFORE_COMPLETION, false);
 		hibernateProp.put(DIALECT, "org.hibernate.dialect.MySQL57Dialect");
-		// this will work only if users/schemas are created first, use ddl.sql script for this
-//		hibernateProp.put(HBM2DDL_AUTO, "create-drop");
+//		 this will work only if users/schemas are created first, use ddl.sql script for this
+		//hibernateProp.put(HBM2DDL_AUTO, "create-drop");
 		hibernateProp.put(SHOW_SQL, true);
 		hibernateProp.put(MAX_FETCH_DEPTH, 3);
 		hibernateProp.put(STATEMENT_BATCH_SIZE, 10);
