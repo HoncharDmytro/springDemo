@@ -35,10 +35,10 @@ public class SingerServiceImpl implements SingerService {
 		return singerRepository.save(singer);
 	}
 
-//	@Override
-//	@Transactional(propagation = Propagation.NEVER)
-//	public long countAll() {
-//		return singerRepository.countAllSingers();
-//	}
+	@Override
+	@Transactional(propagation = Propagation.NEVER)
+	public long countAll() {
+		return singerRepository.countAllSingers();
+	}
 }
 

@@ -12,7 +12,7 @@ import javax.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.honchar.springDemo.chapter09.transactions")
+@ComponentScan(basePackages = "com.honchar.springDemo.chapter09.transactions.base_dao")
 public class ServicesConfig {
 
 	@Autowired
