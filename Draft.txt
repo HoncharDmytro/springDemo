@@ -1,3 +1,75 @@
+Spring-Core - Контейнер компонентов Spring Beans и поддерживающие утилиты (Контейнер внедрения зависимостей). Вся работа через ApplicationContext.
+
+Spring-Beans - объекты, формирующие основу приложения и управляемые контейнером Spring IoC называются bean-компонентами. Компонент — это объект, который создается, собирается и управляется контейнером Spring IoC. Bean-компоненты и зависимости между ними отражаются в метаданных конфигурации, используемых контейнером(@Configuration или xml). @Configuration, @ImportResource, @Bean, @Import(ConfigA.class), @DependsOn
+	Bean Scopes: 
+		singleton(Default) - все DAO используют один и тот же источник данных в одном ApplicationContext
+		prototype - все DAO получают свой собственный источник данных
+		request - новый источник данных для HttpRequest
+		session - новый источник данных для HttpSession
+		websocket - новый источник данных для WebSocket
+		application - все DAO используют один и тот же источник данных в одном ServletContext
+		Пример: @PrototypeScope. 
+	Параметры в @Bean: Class, Name, Scope, Constructor arguments, Properties, Autowiring mode, Lazy initialization mode, Initialization method, 		Destruction method, Description.
+
+Spring-Context - Интерфейс ApplicationContext, пользовательский интерфейс, проверка достоверности, интерфейс JNDI, компоненты Eпterprise JavaBeaпs 	(EJB), удаленное взаимодействие и поддержка почты. Взаимодействует с spring-beans.
+
+Spring-DАO(spring-tx) - это объект, который предоставляет абстрактный интерфейс для поддержки инфраструктуры обработки транзакций и сред реализации JDBC, т.е. Spring DAO представляет собой обобщенную концепцию для доступа к JDBC и Hibernate, MyBatis, JPA, JDO с использованием его отдельных классов поддержки. И он обеспечивает обобщенную иерархию исключений, определяя аннотацию @Repository. Эта аннотация определяет контейнер Spring для преобразования исключений SQL из SQLException в иерархию DataAccessException, не зависящую от стратегии доступа к данным Spring. УМЕР В 2008-М, ВСЕ НУЖНОЕ ПЕРЕЕХАЛО В Spring-tx!!!!!!!!!!!!!
+
+Spring-JDBC - предоставляет JdbcDaoSupport содержащий JdbcTemplate, настраиваемый с помощью DataSource.
+int nbRows = jdbcTemplate.queryForObject("select count(1) from person", Integer.class);
+или
+Person p = jdbcTemplate.queryForObject("select first, last from person where id=?", 
+             rs -> new Person(rs.getString(1), rs.getString(2)), 
+             134561351656L);
+
+Spring-Data - модуль включающий множество вспомогательных модулей и компонентов(sub-components/modules), предоставляющий общий API для определения того, как получить доступ к данным (DAO + аннотации) более общим способом, охватывающим как источники данных SQL, так и NOSQL. JPA (SQL), Redis, Hadoop, NOSQL, ... При следовании конвенции по именованию Spring тянет название метода (findAll() и подобное) для віполнения запроса без написания самой процедуры запроса. Когда контекст приложения загружается, Spring предоставляет прокси для интерфейсов DAO, которые содержат весь шаблонный код, связанный с технологией доступа к данным, и вызывает настроенные запросы. Позволяет создание «автоматических» объектов доступа к данным (DAO) во время компиляции и использует ORM (например, Hibernate) в этих DAO, из DAO интерфейса создается прокси класс (daoImplementation из папки Repository). @EnableJpaRepositories, @Query(JMS)
+	@Controller
+	public class FooController {
+  
+  	@Autowired
+  	private FooRepository fooRepository; спринг сам все создаст, главное знать откуда!
+
+  	@RequestMapping("/")
+  	@ResponseBody
+  	Foo getFoo() {
+    		return fooRepository.findOne(1L);
+ 	   }
+	}
+spring-data-jpa тянет за собой зависимости: eclipse.persistence.jpa, hibernate-core, spring-orm, spring-context, spring-aop, spring-tx, pring-beans, 
+	spring-core, spring-aspects, spring-data-commons.
+
+В Spring есть соответствующий менеджер транзакций для локальных транзакций и JTA, если нужны распределенные транзакции. boot-starter-jta
+
+Spring ORM - модуль включающий множество вспомогательных модулей и компонентов(sub-components/modules), который охватывает многие технологии сохранения, а именно Java Persistence API (JPA), Java Data Objects (JDO), Hibernate и iBATIS, ЯВЛЯЕТСЯ МОСТОМ МЕЖДУ СПРИНГ И ТЕХНОЛОГИЯМИ, ДЛЯ САМИХ ТЕХНОЛОГИЙ НЕОБХОДИМО ПОДКЛЮЧАТЬ СООТВЕТСТВУЮЩИЕ БИБЛИОТЕКИ ОТДЕЛЬНО!!!!!. Предоставляет интерфейсы SessionFactory для Hibernate,
+EntityManagerFactory для JPA, SqlSessionFactory для MyBatis.
+
+SPRING BOOT JPA ИСПОЛЬЗУЕТ ЗАЧАСТУЮ СВЯЗКУ: spring-boot-starter-data-jpa + hibernate-entitymanager + hibernate-core.
+
+Spring АОР - Реализация аспектно-ориентированного программирования (АОП), согласованная с набором интерфейсов АОР Alliance. Реализация сквозного функционала(логирование, тестирование, отлов ошибок и тд)
+
+Spring Web - Базовые средства интеграции, включая составные функциональные средства, инициализацию контекста с помощью приемников сервлетов и web-ориентированный контекст приложений.
+
+Spring Web МVС - Каркас для построения веб-приложений по проектному шаблону "модель-представление-контроллер" (Model-View-Controler - MVC). Построен на API сервлетов и использует архитектуру синхронного блокирующего ввода-вывода с моделью «один запрос на поток».
+
+Spring Batch - реализует стандарт JSR-352, предоставляет интерфейс для пакетной обработки данных (платформа для разработки пакетных приложений). Например – конвертация данных из одной базы в другую, из файла в базу, из брокера сообщений в файл и т.д. и т.п. Эти задания могут выполняться разово или по расписанию.
+Spring Batch подойдёт для приложений с многократно используемыми функциями, чтобы обрабатывать большие объёмы записей. Среди таких функций — ведение логов и трассировка, управление транзакциями, статистика обработки заданий, перезапуск и пропуск заданий, управление ресурсами и другие.
+
+Spring Security - аутентификация, авторизация и контроль доступа. Защита от атак типа фиксация сессии, кликджекинг, межсайтовая подделка запроса и др.
+
+Spring Integration - фреймворк шаблонов интеграции корпоративных приложений (EIP) - микросервисы? Используюет под капотом механизмы обмена сообщениями между адаптерами различных протоколов/систем интеграции на основе каналов сообщений (условные очереди). Spring Integration подключается к проекту, если вам нужно связать POJO (Plain Old Java Object) с помощью парадигмы обмена сообщениями без внедрения зависимостей (DI). Также Integration позволяет взаимодействовать с внешними системами с помощью адаптеров каналов и шлюзов. Адаптеры каналов используются для односторонней интеграции (отправка или получение), а шлюзы — для сценариев запроса / ответа (входящего или исходящего).
+
+Spring WebFlux — веб-платформа, созданная, чтобы по максимуму использовать преимущества современных многоядерных процессоров и обрабатывать огромное количество одновременных подключений.
+
+В Spring Boot также можно опционально подключить библиотеку Reactor для создания реактивных систем на JVM.
+
+Spring Cloud - работа с облачными сервисами.
+
+Spring Cloud Data Flow нужен приложениям, в которых используется потоковая передача и пакетная обработка данных. Нужен для Cloud Foundry и Kubernetes.
+
+
+
+
+
 Chapter 03 Inversion of Control(IoC):
 
 	DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
@@ -78,8 +150,6 @@ Chapter 04 Configuration, context and Bean life cycle:
 	Resource resl = ctx.getResource("file://" + file.getPath());
 	Resource res2 = ctx.getResource("classpath:test.txt");
 	Resource resЗ = ctx.getResource("http://www.google.com");
-
-@Bean, @Configuration, @Component, @ComponentScan, @Service, @Resource, @Repository, @EnableTransactionManagement, @Transactional, @PropertySource, 	@Value, @Lazy, @Scope, 	@DependsOn, @Autowired, @PostConstruct, @PreDestroy, @SuppressWarnings, @MappedSuperclass, @Id, @EmbeddedId, @GeneratedValue, @Column, @Transient, @Version, @Entity, @Table, @Temporal, @OneToMany, @ManyToOne, @ManyToMany,  @JoinColumn, @NamedQueries, @NamedQuery, @TestInstance, @BeforeAll, @AfterAll, @Test, @Import, @ImportResource, @Inject, @Named, @RunWith, @ContextConfiguration, @AliasFor, @PropertySource, @Qualifier, @SpringBootApplication, @EnableAutoConfiguration, @EnableWebSecurity, @EnableGlobalMethodSecurity, @Controller, @RestController, @RequestMapping, @PathVariable, @RequestParam, @ModelAttribute, @SessionAttributes, @SessionAttribute, @RequestBody, @ResponseBody, @RequestHeader, @ResponseHeader, @Required, @CookieValue, @PathVariable, @RequestParam, @ModelAttribute, @SessionAttributes, @PreAuthorize, @GetMapping, @SpringBootTest, @MockBean, @Validated, @ConditionalOnJava, @ConditionalOnProperty, @ConditionalOnWebApplication, @ConditionalOnClass, @Override, @SuppressWarnings, @Deprecated, @SafeVarargs, @FunctionalInterface, @Native, @FunctionalInterface, @Target, @Retention, @Inherited, @Documented, @Repeatable, @GuardedBy, @Immutable, @NotThreadSafe, @ThreadSafe, @NotNull, @NotNullOrEmpty, @ValueObject, @Rollback, @Slf4j, @Profile, @ActiveProfiles, @Aspect, @Pointcut, @Before, @After, @Around, @AspectJ, @EnableAspectJAutoProxy, @AdviceRequired, 
 
 	@Autowired
 	Environment env;
