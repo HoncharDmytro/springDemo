@@ -1,6 +1,6 @@
 Spring-Core - Контейнер компонентов Spring Beans и поддерживающие утилиты (Контейнер внедрения зависимостей). Вся работа через ApplicationContext.
 
-Spring-Beans - объекты, формирующие основу приложения и управляемые контейнером Spring IoC называются bean-компонентами. Компонент — это объект, который создается, собирается и управляется контейнером Spring IoC. Bean-компоненты и зависимости между ними отражаются в метаданных конфигурации, используемых контейнером(@Configuration или xml). @Configuration, @ImportResource, @Bean, @Import(ConfigA.class), @DependsOn
+Spring-Beans - объекты, формирующие основу приложения и управляемые контейнером Spring IoC называются bean-компонентами. Компонент — это объект, который создается, собирается и управляется контейнером Spring IoC. Bean-компоненты и зависимости между ними отражаются в метаданных конфигурации, используемых контейнером(@Configuration или xml). @Configuration, @ImportResource, @Bean, @Component, @Import(ConfigA.class) - загрузка других конфигов(обьединение), @DependsOn
 	Bean Scopes: 
 		singleton(Default) - все DAO используют один и тот же источник данных в одном ApplicationContext
 		prototype - все DAO получают свой собственный источник данных
@@ -67,7 +67,12 @@ Spring Cloud - работа с облачными сервисами.
 Spring Cloud Data Flow нужен приложениям, в которых используется потоковая передача и пакетная обработка данных. Нужен для Cloud Foundry и Kubernetes.
 
 
+COMPONENTSCAN ИЩЕТ COMPONENT И ВСЕ ПРОИЗВОДН!!!!
 
+ ApplicationContext ctx = new AnnotationConfigApplicationContext(someConfigClass);
+           Environment env = ctx.getEnvironment();
+
+Среда также состоит из профилей, то есть профилей «dev» или «production» !!!!!!!!
 
 
 Chapter 03 Inversion of Control(IoC):
@@ -155,7 +160,7 @@ Chapter 04 Configuration, context and Bean life cycle:
 	Environment env;
 	ConfigurableEnvironment env;
 
-Chater 05 Aspect-oriented programming(AOP):
+Chater 05 Aspect-oriented programming(AOP), Cglib(default) and AspectJ:
 
 	pass
 
