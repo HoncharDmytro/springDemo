@@ -160,7 +160,7 @@ Chapter 04 Configuration, context and Bean life cycle:
 	Environment env;
 	ConfigurableEnvironment env;
 
-Chater 05 Aspect-oriented programming(AOP), Cglib(default) and AspectJ:
+Chater 05 Aspect-oriented programming(AOP), (JDK dynamic proxy, Cglib(default) and AspectJ):
 
 	pass
 

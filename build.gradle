@@ -16,14 +16,20 @@ repositories {
 
 ext {
 	//spring libs
-	springVersion = '5.3.20'
+	//springVersion = '5.3.20'
+	springVersion = '5.2.22.RELEASE'
 	//bootVersion = '2.7.0'           //New with jakarta
 	bootVersion = '2.1.18.RELEASE'    //Old with javax
-	springDataVersion = '2.7.0'
-	springAmqpVersion = '2.4.4'
-	springSecurityVersion = '5.7.0'
-	springBatchVersion = '4.3.5'
-	springIntegrationVersion = '5.5.10'
+	//springDataVersion = '2.7.0'
+	springDataVersion = '2.3.9.RELEASE'
+	//springAmqpVersion = '2.4.4'
+	springAmqpVersion = '2.2.22.RELEASE'
+	//springSecurityVersion = '5.7.0'
+	springSecurityVersion = '5.3.13.RELEASE'
+	//springBatchVersion = '4.3.5'
+	springBatchVersion = '4.2.8.RELEASE'
+	//springIntegrationVersion = '5.5.10'
+	springIntegrationVersion = '5.3.10.RELEASE'
 
 	//logging libs
 	slf4jVersion = '1.7.36'
