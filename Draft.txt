@@ -43,6 +43,10 @@ spring-data-jpa тянет за собой зависимости: eclipse.persi
 Spring ORM - модуль включающий множество вспомогательных модулей и компонентов(sub-components/modules), который охватывает многие технологии сохранения, а именно Java Persistence API (JPA), Java Data Objects (JDO), Hibernate и iBATIS, ЯВЛЯЕТСЯ МОСТОМ МЕЖДУ СПРИНГ И ТЕХНОЛОГИЯМИ, ДЛЯ САМИХ ТЕХНОЛОГИЙ НЕОБХОДИМО ПОДКЛЮЧАТЬ СООТВЕТСТВУЮЩИЕ БИБЛИОТЕКИ ОТДЕЛЬНО!!!!!. Предоставляет интерфейсы SessionFactory для Hibernate,
 EntityManagerFactory для JPA, SqlSessionFactory для MyBatis.
 
+Spring EXPRESSION - Содержит все классы для поддержки SpEL (Spring Expression Language - язык выражений Spring).
+
+Spring OXM - Обеспечивает поддержку ОХМ (Object/XML Mappiпg - взаимное преобразование объектов и данных формата XML, применяется при обмене данными с другими приложениями). В этот модуль упакованы классы, предназначенные для абстрагирования маршализации и демаршализации данных формата XML, а также для поддержки таких распространенных инструментальных средств, как Castor, JAXB, XMLBeaпs и XStream.
+
 SPRING BOOT JPA ИСПОЛЬЗУЕТ ЗАЧАСТУЮ СВЯЗКУ: spring-boot-starter-data-jpa + hibernate-entitymanager + hibernate-core.
 
 Spring АОР - Реализация аспектно-ориентированного программирования (АОП), согласованная с набором интерфейсов АОР Alliance. Реализация сквозного функционала(логирование, тестирование, отлов ошибок и тд)
@@ -67,15 +71,22 @@ Spring Cloud - работа с облачными сервисами.
 Spring Cloud Data Flow нужен приложениям, в которых используется потоковая передача и пакетная обработка данных. Нужен для Cloud Foundry и Kubernetes.
 
 
-COMPONENTSCAN ИЩЕТ COMPONENT И ВСЕ ПРОИЗВОДН!!!!
+
+<context: component-scan>, @ComponentScan ищут везде @Component, @Controller, @Repository и @Service, а также @Autowired и @Inject!!!!
+<context: exclude-filter type="assignable" expression="com.example.NotAService"/> - исключает из поиска.
+
 
  ApplicationContext ctx = new AnnotationConfigApplicationContext(someConfigClass);
            Environment env = ctx.getEnvironment();
 
-Среда также состоит из профилей, то есть профилей «dev» или «production» !!!!!!!!
+Среда также состоит из профилей, то есть профилей «dev» или «production» !!!!!!!!	
 
 
 Chapter 03 Inversion of Control(IoC):
+
+Типы инверсии управления: 
+		1. поиск зависимостей(Dependency Lookup, DL) - компонент должен получить ссылку на зависимость, подтипы: извлечение зависимостей и 															контекстный поиск зависимостей (CDL).
+		2. внедрения зависимостей(Dependency Injection, DI) - зависимости внедряются в компонент контейнером инверсии управления, подтипы:  															через конструктор, через метод установки, через поле.
 
 	DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
 	XmlBeanDefinitionReader rdr = new XmlBeanDefinitionReader(factory); //OR// PropertiesBeanDefinitionReader //OR// DefaultListableBeanFactory
@@ -94,6 +105,9 @@ Chapter 03 Inversion of Control(IoC):
  	ConfigurationClassPostProcessor
 	ClassPathXmlApplicationContext
 	ApplicationContext
+
+	PropertiesBeanDefinitionReader
+	XmlBeanDefinitionReader
 
 	PropertySourcesPlaceholderConfigurer
 
