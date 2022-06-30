@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot'
 }
 
 group 'com.honchar'
@@ -10,8 +11,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation testing.jupiterApi
-    testRuntimeOnly testing.jupiterEngine
+    testImplementation tests.jupiterApi
+    testRuntimeOnly tests.jupiterEngine
+    implementation  misc.slf4jApi, misc.logback
 }
 
 test {

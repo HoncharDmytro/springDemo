@@ -1,35 +1,44 @@
 plugins {
-	//id 'org.springframework.boot' version '2.7.0'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.springframework.boot' version '2.3.9.RELEASE' apply false
 	id 'java'
 }
 
-//apply plugin: 'org.springframework.boot'
+subprojects {
+	group = 'com.honchar'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = 8
+	targetCompatibility = 8
 
-group = 'com.honchar'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+//	java {
+//		toolchain {
+//			languageVersion.set(JavaLanguageVersion.of(8))
+//		}
+//	}
 
-repositories {
-	mavenCentral()
+	repositories {
+		mavenCentral()
+	}
+
+
+	test {
+		useJUnitPlatform()
+	}
+
+	wrapper {
+		gradleVersion = "7.4"
+		distributionType = Wrapper.DistributionType.ALL
+	}
+
 }
 
 ext {
 	//spring libs
-	//springVersion = '5.3.20'
 	springVersion = '5.2.22.RELEASE'
-	//bootVersion = '2.7.0'           //New with jakarta
-	bootVersion = '2.1.18.RELEASE'    //Old with javax
-	//springDataVersion = '2.7.0'
+	bootVersion = '2.3.9.RELEASE'
 	springDataVersion = '2.3.9.RELEASE'
-	//springAmqpVersion = '2.4.4'
 	springAmqpVersion = '2.2.22.RELEASE'
-	//springSecurityVersion = '5.7.0'
 	springSecurityVersion = '5.3.13.RELEASE'
-	//springBatchVersion = '4.3.5'
 	springBatchVersion = '4.2.8.RELEASE'
-	//springIntegrationVersion = '5.5.10'
 	springIntegrationVersion = '5.3.10.RELEASE'
 
 	//logging libs
@@ -49,7 +58,7 @@ ext {
 	javaElVersion = '3.0.1-b06'
 	glasshfishELVersion = '2.2.1-b05'
 	jmsVersion = '2.0.1'
-	artemisVersion = '2.22.0'
+	artemisVersion = '2.4.0'
 	hornetqVersion = '2.4.9.Final'
 	castorVersion = '1.4.1'
 	jacksonVersion = '2.13.2.2'
@@ -65,13 +74,13 @@ ext {
 	//persistency libraries
 	hibernateVersion = '5.6.9.Final'
 	hibernateJpaVersion = '1.0.2.Final'
-	hibernateValidatorVersion = '7.0.4.Final'
+	hibernateValidatorVersion = '6.0.23.Final'
 	atomikosVersion = '5.0.8'
 	lang3Version = '3.12.0'
 
 	//testing libs
 	mockitoVersion = '2.0.2-beta'
-	jupiterVersion = '5.8.0'
+	jupiterVersion = '5.6.2'
 	hamcrestVersion = '2.2'
 	dbunitVersion = '2.7.3'
 
@@ -136,7 +145,7 @@ ext {
 
 	]
 
-	testing = [
+	tests = [
 			jupiterApi  : "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}",
 			jupiterEngine: "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}",
 			mockito     : "org.mockito:mockito-all:${mockitoVersion}",
@@ -193,12 +202,4 @@ ext {
 			dbcp2   : "org.apache.commons:commons-dbcp2:${dbcp2Version}",
 	]
 
-}
-
-dependencies {
-
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
 }

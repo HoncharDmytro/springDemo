@@ -1,7 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.0'
-    id 'io.spring.dependency-management'
+    id 'org.springframework.boot'
 }
 
 group 'com.honchar'
@@ -12,10 +11,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation testing.jupiterApi
-    testRuntimeOnly testing.jupiterEngine
-    implementation misc.slf4jApi, misc.aspectjtools
-    implementation spring.beans, spring.context, spring.aop
+    testImplementation tests.jupiterApi
+    testRuntimeOnly tests.jupiterEngine
+    implementation misc.slf4jApi, misc.logback, misc.aspectjtools
+    implementation spring.core, spring.beans, spring.context, spring.aop
     implementation boot.starterAop
 }
 

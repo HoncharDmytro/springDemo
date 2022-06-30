@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation testing.jupiterApi
-    testRuntimeOnly testing.jupiterEngine
+    testImplementation tests.jupiterApi
+    testRuntimeOnly tests.jupiterEngine
 }
 
 test {

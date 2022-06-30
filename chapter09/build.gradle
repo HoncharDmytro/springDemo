@@ -1,7 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.0'
-    id 'io.spring.dependency-management'
+    id 'org.springframework.boot'
 }
 
 group 'com.honchar'
@@ -12,28 +11,12 @@ repositories {
 }
 
 dependencies {
-
-    testImplementation testing.jupiterApi
-
-    testRuntimeOnly testing.jupiterEngine
-
-    implementation  misc.slf4jApi, misc.lang3, misc.guava, misc.artemis
-
-//spring.contextSupportorg(spring-beans, spring-context	,spring-core)
-//spring.jms(spring-beans, spring-core, spring-messaging, spring-tx)
-//spring.dataJpa(eclipse.persistence.jpa, hibernate-core, spring-orm, spring-context, spring-aop, spring-tx,
-//      spring-beans, spring-core, spring-aspects, spring-data-commons)
+    testImplementation tests.jupiterApi
+    testRuntimeOnly tests.jupiterEngine
+    implementation  misc.slf4jApi, misc.logback, misc.lang3, misc.guava, misc.artemis
     implementation spring.contextSupport, spring.jms, spring.dataJpa
-
-//boot.springBootPlugin(io.spring.gradle»dependency-management-plugin, org.apache.commons»commons-compress
-//      spring-core,  spring-boot-buildpack-platform, spring-boot-loader-tools)
-//boot.starterArtemis - Starter for Java Message Service messaging using Apache ActiveMQ Artemis(Message broker +
-//      Message Service client)(org.apache.activemq»artemis-jms-client, spring-jms, spring-boot-starter)
-//boot.starterJta - Starter for JTA transactions using Atomikos(lightweight transaction manager)(
-//      com.atomikos»transactions-jms,transactions-jta,transactions-jdbc; javax.transaction-api, spring-boot-starter)
-    implementation boot.springBootPlugin, boot.starterArtemis, boot.starterJta, boot.starterJpa
-
-    implementation hibernate.em, hibernate.tx, db.mysql, db.postgres, db.dbcp2
+    implementation boot.starterArtemis, boot.starterJta, boot.starterJpa
+    implementation hibernate.core, hibernate.em, hibernate.tx, db.mysql, db.postgres, db.dbcp2
 }
 
 test {

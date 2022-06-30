@@ -4,10 +4,10 @@ import com.honchar.springDemo.chapter07.hibernate_base.entities.Singer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
@@ -51,7 +51,7 @@ public class SingerDaoImpl implements SingerDao {
         return sessionFactory;
     }
 
-    @Resource(name = "sessionFactory")
+    @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
